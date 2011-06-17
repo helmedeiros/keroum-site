@@ -1,0 +1,24 @@
+{
+  "name": "keroum-site",
+  "version": "0.2.0",
+  "private": true,
+  "description": "KeroUm — pitch site and interactive demo",
+  "homepage": "http://keroum.com.br",
+  "scripts": {
+    "lint:js": "jshint js/app",
+    "lint:css": "csslint principal.css",
+    "lint:html": "htmlhint *.html",
+    "lint": "npm run lint:js && npm run lint:css && npm run lint:html",
+    "build": "sass --no-source-map scss:.",
+    "build:watch": "sass --no-source-map --watch scss:.",
+    "test": "jasmine --config=tests/jasmine.json",
+    "verify": "npm run lint && npm test"
+  },
+  "devDependencies": {
+    "csslint": "^1.0.5",
+    "htmlhint": "^1.1.4",
+    "jasmine": "^5.1.0",
+    "jshint": "^2.13.6",
+    "sass": "^1.69.0"
+  }
+}

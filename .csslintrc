@@ -1,0 +1,2 @@
+--ignore=ids,important,adjoining-classes,box-sizing,box-model,overqualified-elements,qualified-headings,unique-headings,fallback-colors,compatible-vendor-prefixes,outline-none,regex-selectors,universal-selector,unqualified-attributes,duplicate-background-images,floats,font-sizes,font-faces,bulletproof-font-face,known-properties
+--quiet

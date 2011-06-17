@@ -1,0 +1,15 @@
+{
+  "browser": true,
+  "jquery": true,
+  "esversion": 5,
+  "curly": true,
+  "eqeqeq": true,
+  "latedef": "nofunc",
+  "undef": true,
+  "unused": "vars",
+  "trailing": true,
+  "globals": {
+    "angular": false,
+    "_gaq": true
+  }
+}
