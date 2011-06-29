@@ -1,0 +1,79 @@
+/* Header */
+
+body.home {
+	background: url(imagens/bgtop/bgbodyhome.jpg) no-repeat top left;
+}
+
+#cabecalho {
+	min-width: 800px;
+	padding: 40px 0 0 40px;
+}
+
+#cabecalho #head {
+	position: relative;
+	width: 720px;
+	margin: 0 auto;
+}
+
+#cabecalho header#header {
+	position: relative;
+	width: 720px;
+	height: 80px;
+	margin: 0 auto;
+}
+
+#cabecalho h1#keroum {
+	color: #3e3e3e;
+	background: url(imagens/logo-header.png) no-repeat;
+	text-indent: -999px;
+	overflow: hidden;
+	height: 80px;
+	width: 280px;
+	display: block;
+	float: left;
+}
+
+#cabecalho #header nav#navegacao {
+	width: 320px;
+	height: 58px;
+	float: left;
+	padding: 22px 0px 0px 120px;
+}
+
+#cabecalho #header nav#navegacao ul li {
+	float: left;
+	margin-left: 10px;
+}
+
+#cabecalho #header nav#navegacao ul li.pagina_atual a {
+	color: #EF5402;
+	background: #b60101;
+	border-radius: 6px;
+}
+
+#cabecalho #header nav#navegacao ul li a {
+	display: inline-block;
+	height: 10px;
+	padding: 8px 15px 14px 14px;
+	font-size: 14px;
+	color: white;
+	cursor: auto;
+}
+
+hr#b70000 {
+	border: 0;
+	height: 1px;
+	width: 720px;
+	color: #b70000;
+	background-color: #b70000;
+	margin: 15px 0px 0px 40px;
+}
+
+hr#e85e05 {
+	border: 0;
+	height: 1px;
+	width: 720px;
+	color: #e85e05;
+	background-color: #e85e05;
+	margin: 0px 0px 0px 40px;
+}

@@ -1,0 +1,74 @@
+/* Team */
+
+hr#a40303 {
+	border: 0;
+	height: 1px;
+	width: 720px;
+	color: #a40303;
+	background-color: #a40303;
+	margin: 5px 0px 0px 0px;
+}
+
+hr#dc2c0f {
+	border: 0;
+	height: 1px;
+	width: 720px;
+	color: #dc2c0f;
+	background-color: #dc2c0f;
+	margin: 0px 0px 0px 0px;
+}
+
+#equipe {
+	min-width: 800px;
+	padding: 2px 0px 0px 30px;
+	color: white;
+}
+
+#equipe #membros {
+	position: relative;
+	width: 720px;
+	margin: 0 auto;
+}
+
+#equipe #membros h2 {
+	margin-top: 25px;
+	text-shadow: rgba(0, 0, 0, 0.2) 0 2px 2px;
+}
+
+#equipe #membros #membro {
+	background-color: #b71000;
+	height: 151px;
+	width: 690px;
+	margin-top: 20px;
+	border-radius: 6px;
+	padding-left: 30px;
+}
+
+#equipe #membros #membro img {
+	margin: 30px 30px 30px 0px;
+	height: 96px;
+	width: 96px;
+}
+
+.right {
+	float: right;
+}
+
+#equipe #membros #membro hgroup {
+	display: block;
+	margin: 30px 5px 30px 0px;
+	width: 545px;
+}
+
+.left {
+	float: left;
+}
+
+#equipe #membros #membro hgroup h5 {
+	color: #ffd200;
+}
+
+#equipe #membros #membro hgroup h6 {
+	color: #ffe5d5;
+	font-weight: normal;
+}

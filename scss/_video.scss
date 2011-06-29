@@ -1,0 +1,36 @@
+/* Video embed and fallback poster */
+
+.video-embed-frame {
+	display: block;
+	border: 0;
+	background: #000;
+}
+
+.video-embed-poster {
+	display: block;
+	width: 427px;
+	height: 320px;
+	background: #1a1a1a;
+	color: #fff;
+	text-align: center;
+	text-decoration: none;
+	padding-top: 130px;
+	box-sizing: border-box;
+}
+
+.video-embed-poster-play {
+	display: inline-block;
+	width: 0;
+	height: 0;
+	border-left: 24px solid #ef5402;
+	border-top: 16px solid transparent;
+	border-bottom: 16px solid transparent;
+	margin-right: 10px;
+	vertical-align: middle;
+}
+
+.video-embed-poster-label {
+	font-size: 13pt;
+	color: #ffe6d6;
+	vertical-align: middle;
+}

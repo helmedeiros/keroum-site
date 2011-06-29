@@ -1,286 +1,291 @@
-@charset "UTF-8";
-/* CSS DOCUMENT */
-
-*{
-	padding: 0;
-	margin: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+/* Reset and base typography */
+* {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
 
 ol, ul {
-	list-style: none;
+  list-style: none;
 }
 
 a {
-	text-decoration: none;
+  text-decoration: none;
 }
 
-body{
-	font-family: "Helvetica Nue", Arial, Verdana, sans-serif;
-	color: #6D6D71; 
-	font-size: 10pt;
-	min-width: 800px;
+body {
+  font-family: "Helvetica Nue", Arial, Verdana, sans-serif;
+  color: #6D6D71;
+  font-size: 10pt;
+  min-width: 800px;
 }
-
-/** BGS GRANDES **/
-body.home {background: url(imagens/bgtop/bgbodyhome.jpg) no-repeat top left;}
 
 div {
-	display: block;
+  display: block;
 }
 
-h1{
-	display: block;
-	font-size: 22pt;
-	font-weight: bold;
+h1 {
+  display: block;
+  font-size: 22pt;
+  font-weight: bold;
 }
 
 h2 {
-	font-size: 18pt;
+  font-size: 18pt;
 }
 
 h5 {
-	font-size: 11pt;
+  font-size: 11pt;
 }
 
 h6 {
-	font-size: 11pt;
+  font-size: 11pt;
 }
 
 h1, h2, h3, h4, h5, h6, strong {
-	font-weight: bold;
+  font-weight: bold;
 }
 
-.clearfix:after{  clear: both;  content: ".";   display: block;  height: 0;  visibility: hidden;  font-size: 0; }
-
-/* CABECALHO */
-#cabecalho{	
-	min-width: 800px;
-	padding: 40px 0 0 40px;	
+.clearfix:after {
+  clear: both;
+  content: ".";
+  display: block;
+  height: 0;
+  visibility: hidden;
+  font-size: 0;
 }
 
-#cabecalho #head{
-	position: relative;
-	width: 720px;
-	margin: 0 auto;
+/* Header */
+body.home {
+  background: url(imagens/bgtop/bgbodyhome.jpg) no-repeat top left;
 }
 
-#cabecalho header#header{
-	position: relative;
-	width: 720px;
-	height: 80px;
-	margin: 0 auto;
+#cabecalho {
+  min-width: 800px;
+  padding: 40px 0 0 40px;
 }
 
-#cabecalho h1#keroum{
-	color: #3e3e3e;
-	background: url(imagens/logo-header.png) no-repeat;
-	text-indent: -999px;
-	overflow: hidden;
-	height: 80px;
-	width: 280px;
-	display: block;
-	float: left;
+#cabecalho #head {
+  position: relative;
+  width: 720px;
+  margin: 0 auto;
 }
 
-#cabecalho #header nav#navegacao{
-	width: 320px;
-	height: 58px;
-	float: left;
-	padding: 22px 0px 0px 120px;	
+#cabecalho header#header {
+  position: relative;
+  width: 720px;
+  height: 80px;
+  margin: 0 auto;
 }
 
-#cabecalho #header nav#navegacao ul li{
-	float: left;
-	margin-left:10px;
+#cabecalho h1#keroum {
+  color: #3e3e3e;
+  background: url(imagens/logo-header.png) no-repeat;
+  text-indent: -999px;
+  overflow: hidden;
+  height: 80px;
+  width: 280px;
+  display: block;
+  float: left;
 }
 
-#cabecalho #header nav#navegacao ul li.pagina_atual a{
-	color: #EF5402; 
-	background: #b60101;
-	border-radius: 6px;
+#cabecalho #header nav#navegacao {
+  width: 320px;
+  height: 58px;
+  float: left;
+  padding: 22px 0px 0px 120px;
 }
 
-
-#cabecalho #header nav#navegacao ul li a{
-	display: inline-block;
-	height: 10px;
-	padding: 8px 15px 14px 14px;
-	font-size: 14px;
-	color: white;
-	cursor: auto;
+#cabecalho #header nav#navegacao ul li {
+  float: left;
+  margin-left: 10px;
 }
 
-/* HR */
-hr#b70000{
-	border: 0;
-	height:1px;
-	width:720px;
-	color: #b70000;
-	background-color: #b70000;
-	margin:15px 0px 0px 40px;
+#cabecalho #header nav#navegacao ul li.pagina_atual a {
+  color: #EF5402;
+  background: #b60101;
+  border-radius: 6px;
 }
 
-hr#e85e05{
-	border:0;
-	height:1px;
-	width:720px;
-	color: #e85e05;
-	background-color: #e85e05;
-	margin:0px 0px 0px 40px;
+#cabecalho #header nav#navegacao ul li a {
+  display: inline-block;
+  height: 10px;
+  padding: 8px 15px 14px 14px;
+  font-size: 14px;
+  color: white;
+  cursor: auto;
 }
 
-/* CONTEUDO */
-#conteudo{
-	min-width: 800px;
-	padding: 2px 0px;
-	color: white;
+hr#b70000 {
+  border: 0;
+  height: 1px;
+  width: 720px;
+  color: #b70000;
+  background-color: #b70000;
+  margin: 15px 0px 0px 40px;
 }
 
-#conteudo #barra{
-	position: relative;
-	width: 720px;
-	margin: 0 auto;
+hr#e85e05 {
+  border: 0;
+  height: 1px;
+  width: 720px;
+  color: #e85e05;
+  background-color: #e85e05;
+  margin: 0px 0px 0px 40px;
 }
 
-.barra-texto{
-	width: 100%;
-	padding: 20px 0 0 0px;
-	margin-left: 38px;
-	text-shadow: rgba(0, 0, 0, 0.2) 0 1px 1px;
+/* Hero (content + video) */
+#conteudo {
+  min-width: 800px;
+  padding: 2px 0px;
+  color: white;
+}
+
+#conteudo #barra {
+  position: relative;
+  width: 720px;
+  margin: 0 auto;
+}
+
+.barra-texto {
+  width: 100%;
+  padding: 20px 0 0 0px;
+  margin-left: 38px;
+  text-shadow: rgba(0, 0, 0, 0.2) 0 1px 1px;
 }
 
 #conteudo #barra .barra-texto hgroup {
-	margin-bottom: 12px;
+  margin-bottom: 12px;
 }
 
 #conteudo #barra .barra-texto hgroup h5 {
-	font-weight: normal;
-	line-height: 16pt;
-	color: #ffe6d6;
-	letter-spacing:0px
+  font-weight: normal;
+  line-height: 16pt;
+  color: #ffe6d6;
+  letter-spacing: 0px;
 }
 
-.barra-video{
-	width: 730px;
-	height: 460px;
-	margin-top: 23px;
-	margin-left: 24px;
-	background: url(imagens/bgtop/iphone.png) no-repeat;
+.barra-video {
+  width: 730px;
+  height: 460px;
+  margin-top: 23px;
+  margin-left: 24px;
+  background: url(imagens/bgtop/iphone.png) no-repeat;
 }
 
-#conteudo #barra .barra-video #video{
-	position: absolute;
-	padding: 33px 0px 0px 148px;
+#conteudo #barra .barra-video #video {
+  position: absolute;
+  padding: 33px 0px 0px 148px;
 }
 
-.video-embed-frame{
-	display: block;
-	border: 0;
-	background: #000;
+/* Video embed and fallback poster */
+.video-embed-frame {
+  display: block;
+  border: 0;
+  background: #000;
 }
 
-.video-embed-poster{
-	display: block;
-	width: 427px;
-	height: 320px;
-	background: #1a1a1a;
-	color: #fff;
-	text-align: center;
-	text-decoration: none;
-	padding-top: 130px;
-	box-sizing: border-box;
+.video-embed-poster {
+  display: block;
+  width: 427px;
+  height: 320px;
+  background: #1a1a1a;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  padding-top: 130px;
+  box-sizing: border-box;
 }
 
-.video-embed-poster-play{
-	display: inline-block;
-	width: 0;
-	height: 0;
-	border-left: 24px solid #ef5402;
-	border-top: 16px solid transparent;
-	border-bottom: 16px solid transparent;
-	margin-right: 10px;
-	vertical-align: middle;
+.video-embed-poster-play {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 24px solid #ef5402;
+  border-top: 16px solid transparent;
+  border-bottom: 16px solid transparent;
+  margin-right: 10px;
+  vertical-align: middle;
 }
 
-.video-embed-poster-label{
-	font-size: 13pt;
-	color: #ffe6d6;
-	vertical-align: middle;
+.video-embed-poster-label {
+  font-size: 13pt;
+  color: #ffe6d6;
+  vertical-align: middle;
 }
 
-hr#a40303{
-	border: 0;
-	height:1px;
-	width:720px;
-	color: #a40303;
-	background-color: #a40303;
-	margin:5px 0px 0px 0px;
+/* Team */
+hr#a40303 {
+  border: 0;
+  height: 1px;
+  width: 720px;
+  color: #a40303;
+  background-color: #a40303;
+  margin: 5px 0px 0px 0px;
 }
 
-hr#dc2c0f{
-	border: 0;
-	height:1px;
-	width:720px;
-	color: #dc2c0f;
-	background-color: #dc2c0f;
-	margin:0px 0px 0px 0px;
+hr#dc2c0f {
+  border: 0;
+  height: 1px;
+  width: 720px;
+  color: #dc2c0f;
+  background-color: #dc2c0f;
+  margin: 0px 0px 0px 0px;
 }
 
-/* EQUIPE */
-#equipe{
-	min-width: 800px;
-	padding: 2px 0px 0px 30px;
-	color: white;
+#equipe {
+  min-width: 800px;
+  padding: 2px 0px 0px 30px;
+  color: white;
 }
 
-#equipe #membros{
-	position: relative;
-	width: 720px;
-	margin: 0 auto;
+#equipe #membros {
+  position: relative;
+  width: 720px;
+  margin: 0 auto;
 }
 
-#equipe #membros h2{
-	margin-top:25px;
-	text-shadow: rgba(0, 0, 0, 0.2) 0 2px 2px;
+#equipe #membros h2 {
+  margin-top: 25px;
+  text-shadow: rgba(0, 0, 0, 0.2) 0 2px 2px;
 }
 
-#equipe #membros #membro{
-	background-color: #b71000;
-	height: 151px;
-	width: 690px;
-	margin-top:	20px;
-	border-radius: 6px;
-	padding-left: 30px;
+#equipe #membros #membro {
+  background-color: #b71000;
+  height: 151px;
+  width: 690px;
+  margin-top: 20px;
+  border-radius: 6px;
+  padding-left: 30px;
 }
 
-#equipe #membros #membro img{
-	margin: 30px 30px 30px 0px;
-	height:96px;
-	width:96px;
+#equipe #membros #membro img {
+  margin: 30px 30px 30px 0px;
+  height: 96px;
+  width: 96px;
 }
 
-.right{
-	float: right;
+.right {
+  float: right;
 }
 
-#equipe #membros #membro hgroup{
-	display: block;
-	margin: 30px 5px 30px 0px;
-	width: 545px;
+#equipe #membros #membro hgroup {
+  display: block;
+  margin: 30px 5px 30px 0px;
+  width: 545px;
 }
 
-.left{
-	float: left;
+.left {
+  float: left;
 }
 
-#equipe #membros #membro hgroup h5{
-	color: #ffd200;
+#equipe #membros #membro hgroup h5 {
+  color: #ffd200;
 }
 
-#equipe #membros #membro hgroup h6{
-	color: #ffe5d5;
-	font-weight: normal;
+#equipe #membros #membro hgroup h6 {
+  color: #ffe5d5;
+  font-weight: normal;
 }
