@@ -1,44 +1,58 @@
-/* Hero (content + video) */
+/* Hero (pitch text + iPhone-framed video) */
 
 #conteudo {
-	min-width: 800px;
-	padding: 2px 0px;
-	color: white;
-}
-
-#conteudo #barra {
-	position: relative;
-	width: 720px;
-	margin: 0 auto;
+	padding: 0 0 40px 0;
+	color: #fff;
 }
 
 .barra-texto {
-	width: 100%;
-	padding: 20px 0 0 0px;
-	margin-left: 38px;
+	padding: 20px 0 0 0;
 	text-shadow: rgba(0, 0, 0, 0.2) 0 1px 1px;
 }
 
-#conteudo #barra .barra-texto hgroup {
-	margin-bottom: 12px;
-}
-
-#conteudo #barra .barra-texto hgroup h5 {
-	font-weight: normal;
-	line-height: 16pt;
+.barra-texto p {
+	font-size: 15px;
+	line-height: 22px;
 	color: #ffe6d6;
-	letter-spacing: 0px;
+	letter-spacing: 0;
 }
 
 .barra-video {
+	position: relative;
 	width: 730px;
 	height: 460px;
-	margin-top: 23px;
-	margin-left: 24px;
-	background: url(imagens/bgtop/iphone.png) no-repeat;
+	margin: 23px auto 0 auto;
+	background: url(imagens/bgtop/iphone.png) no-repeat center top;
 }
 
-#conteudo #barra .barra-video #video {
+.barra-video #video {
 	position: absolute;
-	padding: 33px 0px 0px 148px;
+	top: 33px;
+	left: 50%;
+	margin-left: -213px;
+}
+
+@media (max-width: 767px) {
+	.barra-video {
+		width: 100%;
+		height: auto;
+		max-width: 100%;
+		background: none;
+		margin-top: 12px;
+	}
+
+	.barra-video #video {
+		position: static;
+		top: auto;
+		left: auto;
+		margin: 0 auto;
+		padding: 0;
+		max-width: 100%;
+	}
+
+	.barra-video .video-embed-frame {
+		max-width: 100%;
+		height: auto;
+		aspect-ratio: 4 / 3;
+	}
 }

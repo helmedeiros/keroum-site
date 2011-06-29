@@ -1,79 +1,89 @@
-/* Header */
+/* Header / Navbar */
 
 body.home {
-	background: url(imagens/bgtop/bgbodyhome.jpg) no-repeat top left;
+	background: #871313 url(imagens/bgtop/bgbodyhome.jpg) no-repeat top left;
+	background-size: cover;
 }
 
 #cabecalho {
-	min-width: 800px;
-	padding: 40px 0 0 40px;
+	padding-top: 20px;
 }
 
-#cabecalho #head {
-	position: relative;
-	width: 720px;
-	margin: 0 auto;
+#cabecalho .navbar {
+	background: transparent;
+	border: 0;
+	margin-bottom: 0;
 }
 
-#cabecalho header#header {
-	position: relative;
-	width: 720px;
+#cabecalho .navbar-brand {
 	height: 80px;
-	margin: 0 auto;
+	padding: 0;
+	display: flex;
+	align-items: center;
 }
 
-#cabecalho h1#keroum {
-	color: #3e3e3e;
-	background: url(imagens/logo-header.png) no-repeat;
-	text-indent: -999px;
+#cabecalho #keroum {
+	display: inline-block;
+	background: url(imagens/logo-header.png) no-repeat center left;
+	background-size: contain;
+	text-indent: -9999px;
 	overflow: hidden;
 	height: 80px;
-	width: 280px;
-	display: block;
-	float: left;
+	width: 220px;
+	max-width: 70vw;
 }
 
-#cabecalho #header nav#navegacao {
-	width: 320px;
-	height: 58px;
-	float: left;
-	padding: 22px 0px 0px 120px;
+#cabecalho .navbar-toggle {
+	border-color: #fff;
+	margin-top: 22px;
 }
 
-#cabecalho #header nav#navegacao ul li {
-	float: left;
-	margin-left: 10px;
+#cabecalho .navbar-toggle .icon-bar {
+	background-color: #fff;
 }
 
-#cabecalho #header nav#navegacao ul li.pagina_atual a {
-	color: #EF5402;
+#cabecalho .navbar-nav > li > a {
+	color: #fff;
+	font-size: 14px;
+	padding: 28px 14px;
+}
+
+#cabecalho .navbar-nav > li > a:hover,
+#cabecalho .navbar-nav > li > a:focus {
+	color: #ffd200;
+	background: transparent;
+}
+
+#cabecalho .navbar-nav > li.active > a,
+#cabecalho .navbar-nav > li.active > a:hover,
+#cabecalho .navbar-nav > li.active > a:focus {
+	color: #ef5402;
 	background: #b60101;
 	border-radius: 6px;
-}
-
-#cabecalho #header nav#navegacao ul li a {
-	display: inline-block;
-	height: 10px;
-	padding: 8px 15px 14px 14px;
-	font-size: 14px;
-	color: white;
-	cursor: auto;
 }
 
 hr#b70000 {
 	border: 0;
 	height: 1px;
-	width: 720px;
-	color: #b70000;
 	background-color: #b70000;
-	margin: 15px 0px 0px 40px;
+	margin: 15px 0 0 0;
 }
 
 hr#e85e05 {
 	border: 0;
 	height: 1px;
-	width: 720px;
-	color: #e85e05;
 	background-color: #e85e05;
-	margin: 0px 0px 0px 40px;
+	margin: 0;
+}
+
+@media (max-width: 767px) {
+	#cabecalho .navbar-nav {
+		background: rgba(0, 0, 0, 0.25);
+		border-radius: 6px;
+		margin-top: 8px;
+	}
+
+	#cabecalho .navbar-nav > li > a {
+		padding: 12px 18px;
+	}
 }

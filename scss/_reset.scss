@@ -1,59 +1,30 @@
-/* Reset and base typography */
+/* Base typography (Bootstrap 3 handles reset) */
 
-*{
-	padding: 0;
-	margin: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
-
-ol, ul {
-	list-style: none;
+body {
+	font-family: "Helvetica Neue", Arial, Verdana, sans-serif;
+	color: #6D6D71;
+	font-size: 14px;
+	line-height: 1.5;
 }
 
 a {
+	color: #ef5402;
+}
+
+a:hover, a:focus {
+	color: #b60101;
 	text-decoration: none;
 }
 
-body{
-	font-family: "Helvetica Nue", Arial, Verdana, sans-serif;
-	color: #6D6D71;
-	font-size: 10pt;
-	min-width: 800px;
-}
-
-div {
-	display: block;
-}
-
-h1 {
-	display: block;
-	font-size: 22pt;
-	font-weight: bold;
-}
-
-h2 {
-	font-size: 18pt;
-}
-
-h5 {
-	font-size: 11pt;
-}
-
-h6 {
-	font-size: 11pt;
-}
-
-h1, h2, h3, h4, h5, h6, strong {
-	font-weight: bold;
-}
+h1 { font-size: 28px; font-weight: bold; }
+h2 { font-size: 24px; font-weight: bold; }
+h3 { font-size: 20px; font-weight: bold; }
+h4 { font-size: 18px; font-weight: bold; }
+h5 { font-size: 15px; font-weight: bold; }
+h6 { font-size: 14px; font-weight: bold; }
 
 .clearfix:after {
 	clear: both;
-	content: ".";
-	display: block;
-	height: 0;
-	visibility: hidden;
-	font-size: 0;
+	content: " ";
+	display: table;
 }

@@ -3,72 +3,64 @@
 hr#a40303 {
 	border: 0;
 	height: 1px;
-	width: 720px;
-	color: #a40303;
 	background-color: #a40303;
-	margin: 5px 0px 0px 0px;
+	margin: 5px 0 0 0;
 }
 
 hr#dc2c0f {
 	border: 0;
 	height: 1px;
-	width: 720px;
-	color: #dc2c0f;
 	background-color: #dc2c0f;
-	margin: 0px 0px 0px 0px;
+	margin: 0;
 }
 
 #equipe {
-	min-width: 800px;
-	padding: 2px 0px 0px 30px;
-	color: white;
+	padding: 30px 0 40px 0;
+	color: #fff;
 }
 
-#equipe #membros {
-	position: relative;
-	width: 720px;
-	margin: 0 auto;
-}
-
-#equipe #membros h2 {
-	margin-top: 25px;
+#equipe h2 {
+	margin: 20px 0 24px 0;
 	text-shadow: rgba(0, 0, 0, 0.2) 0 2px 2px;
 }
 
-#equipe #membros #membro {
+.team-grid .membro {
 	background-color: #b71000;
-	height: 151px;
-	width: 690px;
-	margin-top: 20px;
 	border-radius: 6px;
-	padding-left: 30px;
+	padding: 20px;
+	margin-bottom: 20px;
+	min-height: 140px;
+	display: flex;
+	align-items: center;
+	gap: 16px;
 }
 
-#equipe #membros #membro img {
-	margin: 30px 30px 30px 0px;
-	height: 96px;
+.team-grid .membro-foto {
 	width: 96px;
+	height: 96px;
+	border-radius: 4px;
+	flex-shrink: 0;
 }
 
-.right {
-	float: right;
+.team-grid .membro-bio {
+	flex: 1;
 }
 
-#equipe #membros #membro hgroup {
-	display: block;
-	margin: 30px 5px 30px 0px;
-	width: 545px;
-}
-
-.left {
-	float: left;
-}
-
-#equipe #membros #membro hgroup h5 {
+.team-grid .membro-bio h5 {
 	color: #ffd200;
+	margin: 0 0 6px 0;
 }
 
-#equipe #membros #membro hgroup h6 {
+.team-grid .membro-bio h6 {
 	color: #ffe5d5;
 	font-weight: normal;
+	line-height: 1.4;
+	margin: 0;
+}
+
+@media (max-width: 480px) {
+	.team-grid .membro {
+		flex-direction: column;
+		text-align: center;
+	}
 }
