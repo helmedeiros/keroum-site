@@ -25,14 +25,21 @@ hr#dc2c0f {
 }
 
 .team-grid .membro {
-	background-color: #b71000;
-	border-radius: 6px;
+	background-color: $color-card;
+	border-radius: $radius-md;
 	padding: 20px;
 	margin-bottom: 20px;
 	min-height: 140px;
 	display: flex;
 	align-items: center;
 	gap: 16px;
+	box-shadow: $shadow-card;
+	transition: transform $transition-base, box-shadow $transition-base;
+}
+
+.team-grid .membro:hover {
+	transform: translateY(-3px);
+	box-shadow: $shadow-card-hover;
 }
 
 .team-grid .membro-foto {

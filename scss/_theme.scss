@@ -1,0 +1,27 @@
+/* Theme tokens */
+
+$color-bg: #871313;
+$color-bg-deep: #5a0808;
+$color-primary: #ef5402;
+$color-primary-dark: #b60101;
+$color-accent: #ffd200;
+$color-rule-bright: #e85e05;
+$color-rule-dark: #b70000;
+$color-card: #b71000;
+$color-text-soft: #ffe6d6;
+$color-text-muted: #ffe5d5;
+$color-ink: #6d6d71;
+
+$type-base: 14px;
+$type-scale: 1.125;
+
+$radius-sm: 4px;
+$radius-md: 6px;
+$radius-lg: 10px;
+
+$shadow-card: 0 4px 16px rgba(0, 0, 0, 0.18);
+$shadow-card-hover: 0 8px 22px rgba(0, 0, 0, 0.28);
+
+$transition-fast: 150ms ease;
+$transition-base: 250ms ease;
+$transition-slow: 450ms ease;

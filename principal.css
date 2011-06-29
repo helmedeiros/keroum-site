@@ -1,3 +1,4 @@
+/* Theme tokens */
 /* Base typography (Bootstrap 3 handles reset) */
 body {
   font-family: "Helvetica Neue", Arial, Verdana, sans-serif;
@@ -49,6 +50,70 @@ h6 {
   clear: both;
   content: " ";
   display: table;
+}
+
+/* Reveal-on-scroll and small motion utilities */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 450ms ease, transform 450ms ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 {
+  transition-delay: 80ms;
+}
+
+.reveal-delay-2 {
+  transition-delay: 160ms;
+}
+
+.reveal-delay-3 {
+  transition-delay: 240ms;
+}
+
+/* CTA buttons */
+.btn-keroum {
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 6px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 250ms ease, border-color 250ms ease, color 250ms ease, transform 150ms ease;
+}
+
+.btn-keroum:hover, .btn-keroum:focus {
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+
+.btn-keroum-primary {
+  background: #ef5402;
+  color: #fff;
+}
+
+.btn-keroum-primary:hover, .btn-keroum-primary:focus {
+  background: rgb(198.5385892116, 69.779253112, 1.6614107884);
+  color: #fff;
+}
+
+.btn-keroum-ghost {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.btn-keroum-ghost:hover, .btn-keroum-ghost:focus {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #fff;
+  color: #fff;
 }
 
 /* Header / Navbar */
@@ -263,6 +328,13 @@ hr#dc2c0f {
   display: flex;
   align-items: center;
   gap: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+  transition: transform 250ms ease, box-shadow 250ms ease;
+}
+
+.team-grid .membro:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.28);
 }
 
 .team-grid .membro-foto {
