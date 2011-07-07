@@ -116,6 +116,89 @@ h6 {
   color: #fff;
 }
 
+/* Shared section layout */
+.section {
+  padding: 60px 0;
+}
+
+.section-light {
+  background: #f6f1ec;
+  color: #6d6d71;
+}
+
+.section-light h2,
+.section-light h3 {
+  color: #5a0808;
+}
+
+.section-light p {
+  color: #4a4a4a;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.section-dark {
+  background: #5a0808;
+  color: #fff;
+}
+
+.section-dark h2 {
+  color: #ffd200;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.section-subtitle {
+  text-align: center;
+  font-size: 16px;
+  max-width: 720px;
+  margin: 0 auto 36px auto;
+  opacity: 0.85;
+}
+
+.bullet-card {
+  background: #fff;
+  border-radius: 6px;
+  padding: 24px;
+  height: 100%;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+  margin-bottom: 20px;
+  transition: transform 250ms ease, box-shadow 250ms ease;
+}
+
+.bullet-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.28);
+}
+
+.bullet-card h4 {
+  color: #b60101;
+  margin: 0 0 10px 0;
+}
+
+.bullet-card p {
+  margin: 0;
+  color: #555;
+  line-height: 1.5;
+}
+
+.bullet-card .bullet-icon {
+  display: inline-block;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #ef5402;
+  color: #fff;
+  text-align: center;
+  line-height: 44px;
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
 /* Header / Navbar */
 body.home {
   background: #871313 url(imagens/bgtop/bgbodyhome.jpg) no-repeat top left;
