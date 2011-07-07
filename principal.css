@@ -199,6 +199,93 @@ h6 {
   margin-bottom: 12px;
 }
 
+/* "How it works" three-step strip */
+.steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.step {
+  flex: 1 1 240px;
+  max-width: 320px;
+  text-align: center;
+  padding: 20px;
+  position: relative;
+}
+
+.step-num {
+  display: inline-block;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #ffd200;
+  color: #5a0808;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 64px;
+  margin-bottom: 14px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+}
+
+.step h4 {
+  color: #fff;
+  margin: 0 0 8px 0;
+}
+
+.step p {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Feature grid */
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.feature {
+  flex: 1 1 280px;
+  background: #fff;
+  border-radius: 6px;
+  padding: 24px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+  transition: transform 250ms ease, box-shadow 250ms ease;
+}
+
+.feature:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.28);
+}
+
+.feature-icon {
+  display: inline-block;
+  width: 48px;
+  height: 48px;
+  border-radius: 6px;
+  background: rgba(239, 84, 2, 0.12);
+  color: #b60101;
+  text-align: center;
+  line-height: 48px;
+  font-size: 20px;
+  margin-bottom: 14px;
+}
+
+.feature h4 {
+  margin: 0 0 8px 0;
+  color: #5a0808;
+}
+
+.feature p {
+  margin: 0;
+  color: #555;
+  line-height: 1.5;
+}
+
 /* Header / Navbar */
 body.home {
   background: #871313 url(imagens/bgtop/bgbodyhome.jpg) no-repeat top left;
