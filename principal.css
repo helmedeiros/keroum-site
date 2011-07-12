@@ -390,6 +390,46 @@ h6 {
   margin-top: 18px;
 }
 
+/* Language switcher (lives inside the navbar) */
+.lang-switcher {
+  display: inline-flex;
+  align-items: center;
+  margin: 22px 0 0 12px;
+  padding: 4px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.lang-switcher .lang-option {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  transition: background 250ms ease, color 250ms ease;
+}
+
+.lang-switcher .lang-option:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffd200;
+}
+
+.lang-switcher .lang-option.is-active {
+  background: #ef5402;
+  color: #fff;
+}
+
+@media (max-width: 767px) {
+  .lang-switcher {
+    margin: 8px 14px;
+    display: flex;
+    justify-content: flex-start;
+  }
+}
 /* Header / Navbar */
 body.home {
   background: #871313 url(imagens/bgtop/bgbodyhome.jpg) no-repeat top left;
