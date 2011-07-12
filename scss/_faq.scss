@@ -1,0 +1,45 @@
+/* FAQ accordion (Bootstrap collapse styled) */
+
+.faq {
+	max-width: 760px;
+	margin: 0 auto;
+}
+
+.faq-item {
+	background: #fff;
+	border-radius: $radius-md;
+	box-shadow: $shadow-card;
+	margin-bottom: 12px;
+	overflow: hidden;
+}
+
+.faq-question {
+	display: block;
+	padding: 16px 20px;
+	color: $color-bg-deep;
+	font-weight: bold;
+	cursor: pointer;
+	transition: background $transition-base, color $transition-base;
+}
+
+.faq-question:hover,
+.faq-question:focus {
+	background: rgba($color-primary, 0.08);
+	color: $color-primary-dark;
+	text-decoration: none;
+}
+
+.faq-question .faq-toggle {
+	float: right;
+	transition: transform $transition-base;
+}
+
+.faq-question[aria-expanded="true"] .faq-toggle {
+	transform: rotate(45deg);
+}
+
+.faq-answer {
+	padding: 0 20px 18px 20px;
+	color: #555;
+	line-height: 1.55;
+}

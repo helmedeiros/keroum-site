@@ -12,6 +12,7 @@
 	<script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/jquery.scrollTo-min.js"></script>
 	<script type="text/javascript" src="js/app/animations.js" defer></script>
+	<script type="text/javascript" src="js/app/contact.js" defer></script>
 	<!--[if lt IE 9]>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
 	<![endif]-->
@@ -50,7 +51,8 @@
 						<li><a href="#como-funciona">Como funciona</a></li>
 						<li><a href="#funcionalidades">Funcionalidades</a></li>
 						<li><a href="#equipe">Equipe</a></li>
-						<li><a href="mailto:kerohum@gmail.com?subject=Desejo obter o plano de neg&oacute;cio!">Plano de Neg&oacute;cio</a></li>
+						<li><a href="#faq">FAQ</a></li>
+						<li><a href="#contato">Contato</a></li>
 					</ul>
 				</div>
 			</div>
@@ -246,6 +248,94 @@
 					</div>
 				</div>
 			</div>
+		</div>
+	</section>
+	<section id="faq" class="section section-light">
+		<div class="container">
+			<h2 class="section-title reveal">Perguntas frequentes</h2>
+			<p class="section-subtitle reveal reveal-delay-1">As d&uacute;vidas que mais aparecem por e-mail.</p>
+			<div class="faq panel-group" id="faq-accordion" role="tablist">
+				<div class="faq-item reveal">
+					<a class="faq-question" role="button" data-toggle="collapse" data-parent="#faq-accordion" href="#faq-1" aria-expanded="false">
+						Em quais cidades o KeroUm vai estar dispon&iacute;vel?
+						<span class="faq-toggle">+</span>
+					</a>
+					<div id="faq-1" class="collapse" role="tabpanel">
+						<div class="faq-answer">Vamos come&ccedil;ar em Fortaleza, Recife e Salvador, com expans&atilde;o gradual para o restante do Nordeste e Sudeste ao longo do pr&oacute;ximo ano.</div>
+					</div>
+				</div>
+				<div class="faq-item reveal reveal-delay-1">
+					<a class="faq-question" role="button" data-toggle="collapse" data-parent="#faq-accordion" href="#faq-2" aria-expanded="false">
+						Quanto custa para o restaurante?
+						<span class="faq-toggle">+</span>
+					</a>
+					<div id="faq-2" class="collapse" role="tabpanel">
+						<div class="faq-answer">Sem mensalidade. O KeroUm cobra uma comiss&atilde;o por pedido entregue &mdash; alinhada com o volume real do parceiro.</div>
+					</div>
+				</div>
+				<div class="faq-item reveal reveal-delay-2">
+					<a class="faq-question" role="button" data-toggle="collapse" data-parent="#faq-accordion" href="#faq-3" aria-expanded="false">
+						E o entregador? Faz parte do KeroUm ou do restaurante?
+						<span class="faq-toggle">+</span>
+					</a>
+					<div id="faq-3" class="collapse" role="tabpanel">
+						<div class="faq-answer">Os dois modelos cabem. Restaurantes com frota pr&oacute;pria mantêm sua opera&ccedil;&atilde;o. Os demais usam a rede de entregadores parceiros da plataforma.</div>
+					</div>
+				</div>
+				<div class="faq-item reveal">
+					<a class="faq-question" role="button" data-toggle="collapse" data-parent="#faq-accordion" href="#faq-4" aria-expanded="false">
+						Aceita Vale-Refei&ccedil;&atilde;o?
+						<span class="faq-toggle">+</span>
+					</a>
+					<div id="faq-4" class="collapse" role="tabpanel">
+						<div class="faq-answer">Sim. Sodexo, VR, Ticket e Alelo na primeira fase. Outras bandeiras conforme integra&ccedil;&atilde;o.</div>
+					</div>
+				</div>
+				<div class="faq-item reveal reveal-delay-1">
+					<a class="faq-question" role="button" data-toggle="collapse" data-parent="#faq-accordion" href="#faq-5" aria-expanded="false">
+						Posso pagar dinheiro na entrega?
+						<span class="faq-toggle">+</span>
+					</a>
+					<div id="faq-5" class="collapse" role="tabpanel">
+						<div class="faq-answer">Pode. O troco fica registrado no pedido para evitar o vai-e-vem na porta.</div>
+					</div>
+				</div>
+				<div class="faq-item reveal reveal-delay-2">
+					<a class="faq-question" role="button" data-toggle="collapse" data-parent="#faq-accordion" href="#faq-6" aria-expanded="false">
+						Quem est&aacute; por tr&aacute;s do KeroUm?
+						<span class="faq-toggle">+</span>
+					</a>
+					<div id="faq-6" class="collapse" role="tabpanel">
+						<div class="faq-answer">Um time pequeno de desenvolvedores, administradores e designer. Veja a se&ccedil;&atilde;o Equipe nesta p&aacute;gina.</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="contato" class="section section-dark">
+		<div class="container">
+			<h2 class="section-title reveal">Vamos conversar</h2>
+			<p class="section-subtitle reveal reveal-delay-1">Quer receber o plano de neg&oacute;cio, propor uma parceria ou levar o KeroUm para a sua cidade? Escreve pra gente.</p>
+			<form id="contato-form" class="contact reveal reveal-delay-2" novalidate>
+				<div class="form-group">
+					<label for="contato-nome">Nome</label>
+					<input id="contato-nome" name="nome" type="text" class="form-control" data-validate="required" placeholder="Como devemos te chamar?"/>
+					<div class="form-error">Por favor, informe seu nome.</div>
+				</div>
+				<div class="form-group">
+					<label for="contato-email">Email</label>
+					<input id="contato-email" name="email" type="email" class="form-control" data-validate="email" placeholder="voce@exemplo.com"/>
+					<div class="form-error">Informe um email v&aacute;lido.</div>
+				</div>
+				<div class="form-group">
+					<label for="contato-mensagem">Mensagem</label>
+					<textarea id="contato-mensagem" name="mensagem" class="form-control" data-validate="required" placeholder="O que voc&ecirc; gostaria de discutir?"></textarea>
+					<div class="form-error">Conte um pouco mais.</div>
+				</div>
+				<div class="form-actions">
+					<button type="submit" class="btn-keroum btn-keroum-primary">Enviar</button>
+				</div>
+			</form>
 		</div>
 	</section>
 </body>
