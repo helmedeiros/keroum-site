@@ -10,11 +10,79 @@
     "faq": "FAQ",
     "contact": "Contato"
   },
-  "problem": { "title": "O que está quebrado hoje" },
-  "solution": { "title": "O KeroUm resolve" },
-  "howItWorks": { "title": "Como funciona" },
-  "features": { "title": "Funcionalidades" },
-  "team": { "title": "Equipe" },
-  "faq": { "title": "Perguntas frequentes" },
-  "contact": { "title": "Vamos conversar" }
+  "hero": {
+    "pitch": "O KeroUm é &ldquo;o local&rdquo; para compra de suas refeições, com um layout amigável e de fácil acesso, você achará diversas opções de lanches, assim como tempo de entrega, forma de pagamento, endereço e informações nutricionais, levando em consideração sua localização assinada ou georeferenciada. Do seu celular, iPad e até redes sociais. É só escolher e receber."
+  },
+  "problem": {
+    "title": "O que está quebrado hoje",
+    "subtitle": "Pedir comida online no Brasil ainda é uma corrida de obstáculos. Você abre três sites para uma decisão e ainda assim não consegue acompanhar o que está acontecendo com o seu lanche.",
+    "b1": { "title": "Cada restaurante, um site", "body": "Cardápio em PDF, telefone ocupado, pedido por WhatsApp. A experiência muda a cada lanche." },
+    "b2": { "title": "Pagamento na entrega", "body": "Você nunca sabe se tem troco, se aceita cartão, se cabe no Vale-Refeição. Surpresa toda vez." },
+    "b3": { "title": "Pedido no escuro", "body": "Depois de fazer o pedido, silêncio. Saiu? Está perto? Só restou ligar pra cozinha." }
+  },
+  "solution": {
+    "title": "O KeroUm resolve",
+    "subtitle": "Um lugar único para escolher, pagar e receber suas refeições. Pelo celular, pelo iPad, ou direto das suas redes sociais &mdash; com transparência do clique à entrega.",
+    "b1": { "title": "Um catálogo, todos os restaurantes", "body": "Filtros por distância, preço, tempo de entrega e informações nutricionais. Tudo em uma tela." },
+    "b2": { "title": "Pagamento no app", "body": "Cartão, Vale-Refeição e dinheiro na entrega. Tudo combinado antes do pedido sair da cozinha." },
+    "b3": { "title": "Acompanhamento em tempo real", "body": "Status do pedido, chat com o restaurante e localização do entregador no mapa." }
+  },
+  "howItWorks": {
+    "title": "Como funciona",
+    "subtitle": "Três passos do clique à mesa.",
+    "s1": { "title": "Escolha", "body": "Navegue pelo catálogo de restaurantes próximos, filtre por gosto, preço e tempo de entrega." },
+    "s2": { "title": "Pague", "body": "Cartão, Vale-Refeição ou dinheiro na entrega. Tudo combinado no app, sem surpresa." },
+    "s3": { "title": "Receba", "body": "Acompanhe o pedido em tempo real e converse com o restaurante e com o entregador." }
+  },
+  "features": {
+    "title": "Funcionalidades",
+    "subtitle": "O que você encontra dentro do KeroUm.",
+    "f1": { "title": "Geolocalização", "body": "Veja o que está aberto, perto de você, agora." },
+    "f2": { "title": "Cardápio rico", "body": "Fotos, descrição, ingredientes, informações nutricionais e avaliações." },
+    "f3": { "title": "Vários pagamentos", "body": "Cartão, Vale-Refeição, dinheiro na entrega &mdash; tudo combinado antes." },
+    "f4": { "title": "Web, iPad e celular", "body": "Mesma conta em todos os dispositivos. Pedido começa num, termina em outro." },
+    "f5": { "title": "Compartilhe e siga", "body": "Restaurantes favoritos, listas e pedidos compartilháveis com amigos." },
+    "f6": { "title": "Status do pedido", "body": "Recebido, em preparo, saiu para entrega, entregue. Em tempo real." }
+  },
+  "team": {
+    "title": "Equipe",
+    "deco": { "name": "Deco Oliveira", "bio": "Deco Oliveira é administrador e desenvolvedor de sistemas de alta disponibilidade com anos de experiência em sistemas enterprise." },
+    "hana": { "name": "Hana Medeiros", "bio": "Hana Medeiros é administradora especialista em finanças e gerência administrativa." },
+    "helio": { "name": "Hélio Medeiros", "bio": "Hélio Medeiros é analista de sistemas com vasta experiência em projeto, liderança e desenvolvimento de soluções escalonáveis." },
+    "philipe": { "name": "Philipe Coutinho", "bio": "Philipe Coutinho é diretor de arte e webdesigner, especialista em interfaces amigáveis e UX." }
+  },
+  "faq": {
+    "title": "Perguntas frequentes",
+    "subtitle": "As dúvidas que mais aparecem por e-mail.",
+    "q1": "Em quais cidades o KeroUm vai estar disponível?",
+    "a1": "Vamos começar em Fortaleza, Recife e Salvador, com expansão gradual para o restante do Nordeste e Sudeste ao longo do próximo ano.",
+    "q2": "Quanto custa para o restaurante?",
+    "a2": "Sem mensalidade. O KeroUm cobra uma comissão por pedido entregue &mdash; alinhada com o volume real do parceiro.",
+    "q3": "E o entregador? Faz parte do KeroUm ou do restaurante?",
+    "a3": "Os dois modelos cabem. Restaurantes com frota própria mantêm sua operação. Os demais usam a rede de entregadores parceiros da plataforma.",
+    "q4": "Aceita Vale-Refeição?",
+    "a4": "Sim. Sodexo, VR, Ticket e Alelo na primeira fase. Outras bandeiras conforme integração.",
+    "q5": "Posso pagar dinheiro na entrega?",
+    "a5": "Pode. O troco fica registrado no pedido para evitar o vai-e-vem na porta.",
+    "q6": "Quem está por trás do KeroUm?",
+    "a6": "Um time pequeno de desenvolvedores, administradores e designer. Veja a seção Equipe nesta página."
+  },
+  "contact": {
+    "title": "Vamos conversar",
+    "subtitle": "Quer receber o plano de negócio, propor uma parceria ou levar o KeroUm para a sua cidade? Escreve pra gente.",
+    "form": {
+      "nameLabel": "Nome",
+      "namePlaceholder": "Como devemos te chamar?",
+      "emailLabel": "Email",
+      "emailPlaceholder": "voce@exemplo.com",
+      "messageLabel": "Mensagem",
+      "messagePlaceholder": "O que você gostaria de discutir?",
+      "submit": "Enviar"
+    },
+    "errors": {
+      "name": "Por favor, informe seu nome.",
+      "email": "Informe um email válido.",
+      "message": "Conte um pouco mais."
+    }
+  }
 }
