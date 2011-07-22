@@ -10,7 +10,9 @@
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.20/angular.min.js"></script>
 	<script type="text/javascript" src="js/app/demo/data.js"></script>
+	<script type="text/javascript" src="js/app/demo/order-state.js"></script>
 	<script type="text/javascript" src="js/app/demo/resolvers.js"></script>
+	<script type="text/javascript" src="js/app/demo/order-resolver.js"></script>
 	<script type="text/javascript" src="js/app/demo/app.js"></script>
 </head>
 <body class="home demo-page">
@@ -46,27 +48,98 @@
 					</div>
 				</div>
 			</div>
-			<div ng-if="demo.view === 'menu'">
-				<a class="demo-back" ng-click="demo.back()">&larr; Voltar aos restaurantes</a>
-				<div class="menu-header">
-					<h3>{{ demo.selected.name }}</h3>
-					<div class="menu-meta">{{ demo.selected.cuisine }} &middot; {{ demo.selected.etaMin }} min &middot; {{ demo.selected.distanceKm }} km</div>
-				</div>
-				<div ng-if="demo.loadingMenu" class="demo-loading">Carregando cardápio...</div>
-				<div ng-if="demo.error" class="demo-loading">Não conseguimos carregar este cardápio.</div>
-				<div ng-if="!demo.loadingMenu && demo.menu">
-					<div class="menu-category" ng-repeat="cat in demo.menu">
-						<h5>{{ cat.category }}</h5>
-						<div class="menu-item" ng-repeat="item in cat.items">
-							<div class="menu-item-info">
-								<h6>{{ item.name }}</h6>
-								<p>{{ item.desc }}</p>
-								<div class="menu-item-kcal">{{ item.kcal }} kcal</div>
+
+			<div ng-if="demo.view === 'menu'" class="demo-menu-grid">
+				<div class="demo-menu-main">
+					<a class="demo-back" ng-click="demo.back()">&larr; Voltar aos restaurantes</a>
+					<div class="menu-header">
+						<h3>{{ demo.selected.name }}</h3>
+						<div class="menu-meta">{{ demo.selected.cuisine }} &middot; {{ demo.selected.etaMin }} min &middot; {{ demo.selected.distanceKm }} km</div>
+					</div>
+					<div ng-if="demo.loadingMenu" class="demo-loading">Carregando cardápio...</div>
+					<div ng-if="demo.error" class="demo-loading">Não conseguimos carregar este cardápio.</div>
+					<div ng-if="!demo.loadingMenu && demo.menu">
+						<div class="menu-category" ng-repeat="cat in demo.menu">
+							<h5>{{ cat.category }}</h5>
+							<div class="menu-item" ng-repeat="item in cat.items">
+								<div class="menu-item-info">
+									<h6>{{ item.name }}</h6>
+									<p>{{ item.desc }}</p>
+									<div class="menu-item-kcal">{{ item.kcal }} kcal</div>
+								</div>
+								<div class="menu-item-actions">
+									<div class="menu-item-price">{{ demo.priceLabel(item.price) }}</div>
+									<button class="btn-keroum btn-keroum-ghost menu-item-add" ng-click="demo.addToCart(item)">Adicionar</button>
+								</div>
 							</div>
-							<div class="menu-item-price">{{ demo.priceLabel(item.price) }}</div>
 						</div>
 					</div>
 				</div>
+				<aside class="cart-panel">
+					<h5>Carrinho ({{ demo.cartCount() }})</h5>
+					<div ng-if="demo.cart.length === 0" class="cart-empty">Adicione itens do cardápio.</div>
+					<ul class="cart-items" ng-if="demo.cart.length > 0">
+						<li ng-repeat="ci in demo.cart">
+							<div class="cart-item-name">{{ ci.quantity }}&times; {{ ci.name }}</div>
+							<div class="cart-item-line">
+								<span class="cart-item-price">{{ demo.priceLabel(ci.price * ci.quantity) }}</span>
+								<a class="cart-remove" ng-click="demo.removeFromCart(ci)">remover</a>
+							</div>
+						</li>
+					</ul>
+					<div class="cart-total" ng-if="demo.cart.length > 0">
+						<span>Subtotal</span>
+						<strong>{{ demo.priceLabel(demo.cartSubtotal()) }}</strong>
+					</div>
+					<button class="btn-keroum btn-keroum-primary cart-checkout-btn" ng-click="demo.openCheckout()" ng-disabled="demo.cart.length === 0">Finalizar pedido</button>
+				</aside>
+			</div>
+
+			<div ng-if="demo.view === 'checkout'" class="demo-checkout">
+				<a class="demo-back" ng-click="demo.cancelCheckout()">&larr; Voltar ao cardápio</a>
+				<h3>Finalizar pedido</h3>
+				<p class="checkout-summary">{{ demo.cartCount() }} itens &middot; total {{ demo.priceLabel(demo.cartSubtotal() + 6) }} (entrega R$ 6,00)</p>
+				<form class="checkout-form" ng-submit="demo.submitCheckout()" novalidate>
+					<div class="form-group">
+						<label for="ck-name">Nome</label>
+						<input id="ck-name" type="text" class="form-control" ng-model="demo.checkout.name" placeholder="Para a entrega"/>
+					</div>
+					<div class="form-group">
+						<label for="ck-address">Endereço</label>
+						<input id="ck-address" type="text" class="form-control" ng-model="demo.checkout.address" placeholder="Rua, número, bairro"/>
+					</div>
+					<div class="form-group">
+						<label>Pagamento</label>
+						<div class="payment-options">
+							<label class="payment-option">
+								<input type="radio" ng-model="demo.checkout.paymentMethod" value="card"/>
+								<span>Cartão</span>
+							</label>
+							<label class="payment-option">
+								<input type="radio" ng-model="demo.checkout.paymentMethod" value="voucher"/>
+								<span>Vale-Refeição</span>
+							</label>
+							<label class="payment-option">
+								<input type="radio" ng-model="demo.checkout.paymentMethod" value="cash"/>
+								<span>Dinheiro na entrega</span>
+							</label>
+						</div>
+					</div>
+					<button type="submit" class="btn-keroum btn-keroum-primary" ng-disabled="!demo.canSubmitCheckout()">Confirmar pedido</button>
+				</form>
+			</div>
+
+			<div ng-if="demo.view === 'status'" class="demo-status">
+				<h3>Seu pedido</h3>
+				<p class="status-summary">{{ demo.selected.name }} &middot; {{ demo.cartCount() }} itens &middot; {{ demo.priceLabel(demo.activeOrder.total) }}</p>
+				<ol class="status-timeline">
+					<li ng-repeat="step in demo.timelineSteps()"
+						ng-class="{ 'is-reached': demo.isStatusReached(step.key), 'is-current': step.key === demo.activeOrder.status }">
+						<span class="status-dot" aria-hidden="true"></span>
+						<span class="status-label">{{ step.labelPt }}</span>
+					</li>
+				</ol>
+				<button class="btn-keroum btn-keroum-ghost" ng-click="demo.startOver()" ng-if="demo.activeOrder.status === 'delivered'">Fazer outro pedido</button>
 			</div>
 		</div>
 	</section>
