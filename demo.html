@@ -11,8 +11,10 @@
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.20/angular.min.js"></script>
 	<script type="text/javascript" src="js/app/demo/data.js"></script>
 	<script type="text/javascript" src="js/app/demo/order-state.js"></script>
+	<script type="text/javascript" src="js/app/demo/chat-script.js"></script>
 	<script type="text/javascript" src="js/app/demo/resolvers.js"></script>
 	<script type="text/javascript" src="js/app/demo/order-resolver.js"></script>
+	<script type="text/javascript" src="js/app/demo/chat-resolver.js"></script>
 	<script type="text/javascript" src="js/app/demo/app.js"></script>
 </head>
 <body class="home demo-page">
@@ -129,17 +131,33 @@
 				</form>
 			</div>
 
-			<div ng-if="demo.view === 'status'" class="demo-status">
-				<h3>Seu pedido</h3>
-				<p class="status-summary">{{ demo.selected.name }} &middot; {{ demo.cartCount() }} itens &middot; {{ demo.priceLabel(demo.activeOrder.total) }}</p>
-				<ol class="status-timeline">
-					<li ng-repeat="step in demo.timelineSteps()"
-						ng-class="{ 'is-reached': demo.isStatusReached(step.key), 'is-current': step.key === demo.activeOrder.status }">
-						<span class="status-dot" aria-hidden="true"></span>
-						<span class="status-label">{{ step.labelPt }}</span>
-					</li>
-				</ol>
-				<button class="btn-keroum btn-keroum-ghost" ng-click="demo.startOver()" ng-if="demo.activeOrder.status === 'delivered'">Fazer outro pedido</button>
+			<div ng-if="demo.view === 'status'" class="demo-status-grid">
+				<div class="demo-status">
+					<h3>Seu pedido</h3>
+					<p class="status-summary">{{ demo.selected.name }} &middot; {{ demo.cartCount() }} itens &middot; {{ demo.priceLabel(demo.activeOrder.total) }}</p>
+					<ol class="status-timeline">
+						<li ng-repeat="step in demo.timelineSteps()"
+							ng-class="{ 'is-reached': demo.isStatusReached(step.key), 'is-current': step.key === demo.activeOrder.status }">
+							<span class="status-dot" aria-hidden="true"></span>
+							<span class="status-label">{{ step.labelPt }}</span>
+						</li>
+					</ol>
+					<button class="btn-keroum btn-keroum-ghost" ng-click="demo.startOver()" ng-if="demo.activeOrder.status === 'delivered'">Fazer outro pedido</button>
+				</div>
+				<aside class="demo-chat">
+					<h5>Conversa com o restaurante</h5>
+					<div class="chat-empty" ng-if="demo.chatMessages.length === 0">As mensagens aparecem aqui assim que o pedido começar a andar.</div>
+					<ul class="chat-log">
+						<li ng-repeat="m in demo.chatMessages" ng-class="'chat-' + m.sender">
+							<div class="chat-sender">{{ demo.chatSenderLabel(m.sender) }}</div>
+							<div class="chat-text">{{ m.text }}</div>
+						</li>
+					</ul>
+					<form class="chat-input" ng-submit="demo.sendChat()" novalidate>
+						<input type="text" class="form-control" ng-model="demo.chatDraft" placeholder="Escreva uma mensagem..."/>
+						<button type="submit" class="btn-keroum btn-keroum-primary" ng-disabled="!demo.chatDraft">Enviar</button>
+					</form>
+				</aside>
 			</div>
 		</div>
 	</section>

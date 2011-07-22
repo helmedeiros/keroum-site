@@ -13,7 +13,7 @@
     "build:assets": "bash bin/build-assets.sh",
     "build": "npm run build:css && npm run build:assets",
     "test": "jasmine --config=tests/jasmine.json",
-    "verify": "npm run lint && npm test && npm run build",
+    "verify": "npm run build && npm run lint && npm test",
     "deploy": "npm run verify && bash bin/publish.sh"
   },
   "devDependencies": {
