@@ -1,8 +1,13 @@
 #!/usr/bin/env bash
 # Assemble the served output into dist/ alongside the compiled sass.
+# Mirrors the source tree: stale files in dist/ are removed before the copy
+# so a delete in source propagates to the publish target.
 set -euo pipefail
 
 DIST="dist"
+
+# Clean the served sub-trees so deletes propagate (keep dist/principal.css from sass build).
+rm -rf "$DIST/js" "$DIST/imagens" "$DIST/locales" "$DIST/index.html" "$DIST/demo.html"
 mkdir -p "$DIST/js" "$DIST/imagens" "$DIST/locales"
 
 # HTML
