@@ -6,12 +6,20 @@
     "solution": "Solution",
     "howItWorks": "How it works",
     "features": "Features",
+    "demo": "Demo",
     "team": "Team",
     "faq": "FAQ",
     "contact": "Contact"
   },
   "hero": {
-    "pitch": "KeroUm is &ldquo;the place&rdquo; to order your meals: a friendly, accessible layout where you find dozens of options along with delivery time, payment method, address and nutrition info, all tailored to your saved or geolocated address. From your phone, your iPad, even your social networks. Pick it and receive it."
+    "pitch": "KeroUm is &ldquo;the place&rdquo; to order your meals: a friendly, accessible layout where you find dozens of options along with delivery time, payment method, address and nutrition info, all tailored to your saved or geolocated address. From your phone, your iPad, even your social networks. Pick it and receive it.",
+    "tryDemo": "Try the demo",
+    "businessPlan": "Business plan"
+  },
+  "demoCta": {
+    "title": "Want to see it working?",
+    "subtitle": "Place an order in the simulation. No charge, no real delivery &mdash; just the click-to-table experience.",
+    "button": "Open the demo"
   },
   "problem": {
     "title": "What’s broken today",

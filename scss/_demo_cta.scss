@@ -1,0 +1,58 @@
+/* Hero CTA row */
+
+.hero-ctas {
+	margin-top: 18px;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
+/* Demo banner section (between Features and Team) */
+
+.demo-cta {
+	padding: 40px 0;
+}
+
+.demo-cta-card {
+	background: linear-gradient(135deg, $color-primary-dark, $color-primary);
+	border-radius: $radius-lg;
+	padding: 28px 32px;
+	box-shadow: $shadow-card;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 24px;
+	flex-wrap: wrap;
+}
+
+.demo-cta-copy {
+	flex: 1 1 320px;
+	min-width: 0;
+}
+
+.demo-cta-copy h3 {
+	color: $color-accent;
+	margin: 0 0 6px 0;
+}
+
+.demo-cta-copy p {
+	color: rgba(255, 255, 255, 0.92);
+	margin: 0;
+	line-height: 1.5;
+}
+
+.demo-cta-btn {
+	flex: 0 0 auto;
+	white-space: nowrap;
+}
+
+@media (max-width: 540px) {
+	.demo-cta-card {
+		padding: 22px;
+		text-align: center;
+	}
+
+	.demo-cta-btn {
+		width: 100%;
+	}
+}
