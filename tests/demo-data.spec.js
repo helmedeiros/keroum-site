@@ -13,6 +13,8 @@ describe('kerohum.demo data', function () {
 			expect(typeof r.id).toBe('string');
 			expect(typeof r.name).toBe('string');
 			expect(typeof r.cuisine).toBe('string');
+			expect(typeof r.emblem).toBe('string');
+			expect(r.emblem.length).toBeGreaterThan(0);
 			expect(typeof r.etaMin).toBe('number');
 			expect(typeof r.distanceKm).toBe('number');
 			expect(typeof r.rating).toBe('number');
