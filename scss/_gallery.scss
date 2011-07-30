@@ -1,0 +1,45 @@
+/* Original KeroUm screens gallery */
+
+.demo-gallery {
+	padding-top: 50px;
+}
+
+.telas-grid {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+	justify-content: center;
+}
+
+.tela {
+	flex: 0 1 220px;
+	margin: 0;
+	text-align: center;
+}
+
+.tela a {
+	display: block;
+	background: #1f1f1f;
+	border-radius: $radius-md;
+	overflow: hidden;
+	transition: transform $transition-base, box-shadow $transition-base;
+	box-shadow: $shadow-card;
+}
+
+.tela a:hover {
+	transform: translateY(-3px);
+	box-shadow: $shadow-card-hover;
+}
+
+.tela img {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+.tela figcaption {
+	margin-top: 10px;
+	color: $color-bg-deep;
+	font-size: 13px;
+	font-weight: bold;
+}
