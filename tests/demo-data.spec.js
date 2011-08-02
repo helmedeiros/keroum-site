@@ -55,4 +55,58 @@ describe('kerohum.demo data', function () {
 		expect(a).not.toBe(b);
 		expect(a.length).toBe(b.length);
 	});
+
+	function eachItem(visit) {
+		data.restaurants.forEach(function (r) {
+			data.menuFor(r.id).forEach(function (cat) {
+				cat.items.forEach(function (item) { visit(item, r); });
+			});
+		});
+	}
+
+	it('exposes at least one configurable item per restaurant', function () {
+		var configurableByRestaurant = {};
+		eachItem(function (item, r) {
+			if (item.options) { configurableByRestaurant[r.id] = true; }
+		});
+		data.restaurants.forEach(function (r) {
+			expect(configurableByRestaurant[r.id]).toBe(true);
+		});
+	});
+
+	it('each configurable item declares choices and extras arrays', function () {
+		eachItem(function (item) {
+			if (!item.options) { return; }
+			expect(Array.isArray(item.options.choices)).toBe(true);
+			expect(Array.isArray(item.options.extras)).toBe(true);
+		});
+	});
+
+	it('every required choice carries at least two priced options', function () {
+		eachItem(function (item) {
+			if (!item.options) { return; }
+			item.options.choices.forEach(function (c) {
+				expect(typeof c.id).toBe('string');
+				expect(typeof c.label).toBe('string');
+				expect(Array.isArray(c.options)).toBe(true);
+				expect(c.options.length).toBeGreaterThan(1);
+				c.options.forEach(function (o) {
+					expect(typeof o.id).toBe('string');
+					expect(typeof o.label).toBe('string');
+					expect(typeof o.priceDelta).toBe('number');
+				});
+			});
+		});
+	});
+
+	it('every extra is a labelled add-on with a numeric price delta', function () {
+		eachItem(function (item) {
+			if (!item.options) { return; }
+			item.options.extras.forEach(function (e) {
+				expect(typeof e.id).toBe('string');
+				expect(typeof e.label).toBe('string');
+				expect(typeof e.priceDelta).toBe('number');
+			});
+		});
+	});
 });

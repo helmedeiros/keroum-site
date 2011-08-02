@@ -39,74 +39,150 @@
 	</header>
 	<section class="section section-dark demo-shell" ng-controller="DemoController as demo">
 		<div class="container">
-			<div ng-if="demo.view === 'list'">
-				<h2 class="section-title">Demo: peça pelo KeroUm</h2>
-				<p class="section-subtitle">Escolha um restaurante e veja o cardápio. Tudo simulado — sem cobrança, sem entrega de verdade.</p>
-				<div ng-if="demo.loadingList" class="demo-loading">Carregando restaurantes...</div>
-				<div ng-if="!demo.loadingList" class="restaurant-list">
-					<div class="restaurant-card" ng-repeat="r in demo.restaurants" ng-click="demo.open(r)">
-						<div class="restaurant-emblem" aria-hidden="true">{{ r.emblem }}</div>
-						<h4>{{ r.name }}</h4>
-						<div class="restaurant-meta">{{ r.cuisine }}</div>
-						<div class="restaurant-stats">
-							<span>{{ r.etaMin }} min</span>
-							<span>{{ r.distanceKm }} km</span>
-							<span class="rating">&#9733; {{ r.rating }}</span>
-						</div>
-					</div>
-				</div>
-			</div>
 
-			<div ng-if="demo.view === 'menu'" class="demo-menu-grid">
-				<div class="demo-menu-main">
-					<a class="demo-back" ng-click="demo.back()">&larr; Voltar aos restaurantes</a>
-					<div class="menu-header">
-						<h3>{{ demo.selected.name }}</h3>
-						<div class="menu-meta">{{ demo.selected.cuisine }} &middot; {{ demo.selected.etaMin }} min &middot; {{ demo.selected.distanceKm }} km</div>
-					</div>
-					<div ng-if="demo.loadingMenu" class="demo-loading">Carregando cardápio...</div>
-					<div ng-if="demo.error" class="demo-loading">Não conseguimos carregar este cardápio.</div>
-					<div ng-if="!demo.loadingMenu && demo.menu">
-						<div class="menu-category" ng-repeat="cat in demo.menu">
-							<h5>{{ cat.category }}</h5>
-							<div class="menu-item" ng-repeat="item in cat.items">
-								<div class="menu-item-info">
-									<h6>{{ item.name }}</h6>
-									<p>{{ item.desc }}</p>
-									<div class="menu-item-kcal">{{ item.kcal }} kcal</div>
-								</div>
-								<div class="menu-item-actions">
-									<div class="menu-item-price">{{ demo.priceLabel(item.price) }}</div>
-									<button class="btn-keroum btn-keroum-ghost menu-item-add" ng-click="demo.addToCart(item)">Adicionar</button>
-								</div>
-							</div>
-						</div>
+			<div ng-if="demo.view === 'shop'" class="shop-view">
+				<header class="shop-header">
+					<h2 class="shop-title">Peça pelo KeroUm</h2>
+					<p class="shop-subtitle">Escolha um restaurante, monte seu pedido e some itens de outras casas no mesmo carrinho.</p>
+				</header>
+
+				<div class="shop-search shop-search-restaurants">
+					<span class="shop-search-icon" aria-hidden="true">🔍</span>
+					<input type="text" ng-model="demo.restaurantSearch" placeholder="Buscar restaurante ou cozinha..." aria-label="Buscar restaurante"/>
+				</div>
+
+				<div ng-if="demo.loadingList" class="demo-loading">Carregando restaurantes...</div>
+
+				<div ng-if="!demo.loadingList" class="restaurant-strip">
+					<button class="restaurant-chip" type="button"
+						ng-repeat="r in demo.filteredRestaurants()"
+						ng-class="{ 'is-active': demo.selectedRestaurantId === r.id }"
+						ng-click="demo.selectRestaurant(r)">
+						<span class="restaurant-chip-emblem" aria-hidden="true">{{ r.emblem }}</span>
+						<span class="restaurant-chip-name">{{ r.name }}</span>
+						<span class="restaurant-chip-meta">{{ r.distanceKm }} km · {{ r.etaMin }} min</span>
+					</button>
+					<div ng-if="demo.filteredRestaurants().length === 0" class="restaurant-strip-empty">
+						Nenhum restaurante encontrado.
 					</div>
 				</div>
-				<aside class="cart-panel">
-					<h5>Carrinho ({{ demo.cartCount() }})</h5>
-					<div ng-if="demo.cart.length === 0" class="cart-empty">Adicione itens do cardápio.</div>
-					<ul class="cart-items" ng-if="demo.cart.length > 0">
-						<li ng-repeat="ci in demo.cart">
-							<div class="cart-item-name">{{ ci.quantity }}&times; {{ ci.name }}</div>
-							<div class="cart-item-line">
-								<span class="cart-item-price">{{ demo.priceLabel(ci.price * ci.quantity) }}</span>
-								<a class="cart-remove" ng-click="demo.removeFromCart(ci)">remover</a>
+
+				<div class="shop-body">
+					<main class="shop-products">
+						<div class="shop-products-header" ng-if="demo.selectedRestaurant">
+							<div>
+								<h3>{{ demo.selectedRestaurant.name }}</h3>
+								<div class="shop-products-meta">{{ demo.selectedRestaurant.cuisine }} · {{ demo.selectedRestaurant.etaMin }} min · {{ demo.selectedRestaurant.distanceKm }} km</div>
 							</div>
-						</li>
-					</ul>
-					<div class="cart-total" ng-if="demo.cart.length > 0">
-						<span>Subtotal</span>
-						<strong>{{ demo.priceLabel(demo.cartSubtotal()) }}</strong>
+							<div class="shop-search shop-search-products">
+								<span class="shop-search-icon" aria-hidden="true">🔍</span>
+								<input type="text" ng-model="demo.productSearch" placeholder="Buscar no cardápio..." aria-label="Buscar produto"/>
+							</div>
+						</div>
+
+						<div ng-if="demo.loadingMenu" class="demo-loading">Carregando cardápio...</div>
+						<div ng-if="demo.error" class="demo-loading">Não conseguimos carregar este cardápio.</div>
+
+						<div ng-if="!demo.loadingMenu && demo.menu" class="product-grid">
+							<button class="product-card" type="button"
+								ng-repeat="entry in demo.filteredProducts()"
+								ng-click="demo.openConfigurator(entry.item)">
+								<div class="product-card-category">{{ entry.category }}</div>
+								<h4 class="product-card-name">{{ entry.item.name }}</h4>
+								<p class="product-card-desc">{{ entry.item.desc }}</p>
+								<div class="product-card-footer">
+									<span class="product-card-price">{{ demo.priceLabel(entry.item.price) }}</span>
+									<span class="product-card-kcal">{{ entry.item.kcal }} kcal</span>
+								</div>
+								<div class="product-card-options" ng-if="entry.item.options">Personalizar</div>
+							</button>
+							<div ng-if="demo.filteredProducts().length === 0" class="product-grid-empty">
+								Nenhum item bate com a busca.
+							</div>
+						</div>
+					</main>
+
+					<aside class="cart-panel">
+						<h5>Carrinho ({{ demo.cartCount() }})<span class="cart-restaurant-tally" ng-if="demo.cartRestaurantCount() > 1"> · {{ demo.cartRestaurantCount() }} restaurantes</span></h5>
+						<div ng-if="demo.cart.length === 0" class="cart-empty">Toque em um produto para personalizar e adicionar.</div>
+						<div class="cart-groups" ng-if="demo.cart.length > 0">
+							<section class="cart-group" ng-repeat="group in demo.cartByRestaurant()">
+								<header class="cart-group-name">{{ group.restaurantName }}</header>
+								<ul class="cart-items">
+									<li ng-repeat="ci in group.items">
+										<div class="cart-item-name">{{ ci.quantity }}× {{ ci.name }}</div>
+										<div class="cart-item-config" ng-if="demo.cartItemConfigSummary(ci)">{{ demo.cartItemConfigSummary(ci) }}</div>
+										<div class="cart-item-line">
+											<span class="cart-item-price">{{ demo.priceLabel(ci.price * ci.quantity) }}</span>
+											<a class="cart-remove" ng-click="demo.removeFromCart(ci)">remover</a>
+										</div>
+									</li>
+								</ul>
+							</section>
+						</div>
+						<div class="cart-total" ng-if="demo.cart.length > 0">
+							<span>Subtotal</span>
+							<strong>{{ demo.priceLabel(demo.cartSubtotal()) }}</strong>
+						</div>
+						<button class="btn-keroum btn-keroum-primary cart-checkout-btn" ng-click="demo.openCheckout()" ng-disabled="demo.cart.length === 0">Finalizar pedido</button>
+					</aside>
+				</div>
+
+				<div class="configurator-backdrop" ng-if="demo.configurator" ng-click="demo.closeConfigurator()"></div>
+				<div class="configurator-modal" ng-if="demo.configurator" role="dialog" aria-labelledby="cfg-title" ng-click="$event.stopPropagation()">
+					<button class="configurator-close" type="button" ng-click="demo.closeConfigurator()" aria-label="Fechar">×</button>
+					<div class="configurator-restaurant">{{ demo.configurator.restaurant.name }}</div>
+					<h4 id="cfg-title" class="configurator-title">{{ demo.configurator.item.name }}</h4>
+					<p class="configurator-desc">{{ demo.configurator.item.desc }}</p>
+
+					<div class="configurator-choice" ng-repeat="choice in demo.configurator.item.options.choices">
+						<div class="configurator-choice-label">{{ choice.label }} <span class="configurator-required">obrigatório</span></div>
+						<div class="configurator-choice-options">
+							<label class="configurator-option" ng-repeat="opt in choice.options"
+								ng-class="{ 'is-selected': demo.configurator.choices[choice.id] === opt.id }">
+								<input type="radio" ng-model="demo.configurator.choices[choice.id]" ng-value="opt.id"/>
+								<span class="configurator-option-label">{{ opt.label }}</span>
+								<span class="configurator-option-delta" ng-if="opt.priceDelta !== 0">{{ opt.priceDelta &gt; 0 ? '+ ' : '− ' }}{{ demo.priceLabel(opt.priceDelta &gt; 0 ? opt.priceDelta : -opt.priceDelta) }}</span>
+							</label>
+						</div>
 					</div>
-					<button class="btn-keroum btn-keroum-primary cart-checkout-btn" ng-click="demo.openCheckout()" ng-disabled="demo.cart.length === 0">Finalizar pedido</button>
-				</aside>
+
+					<div class="configurator-extras" ng-if="demo.configurator.item.options.extras.length">
+						<div class="configurator-choice-label">Adicionais <span class="configurator-optional">opcional</span></div>
+						<label class="configurator-extra" ng-repeat="extra in demo.configurator.item.options.extras"
+							ng-class="{ 'is-selected': demo.configurator.extras[extra.id] }">
+							<input type="checkbox" ng-model="demo.configurator.extras[extra.id]"/>
+							<span class="configurator-extra-label">{{ extra.label }}</span>
+							<span class="configurator-extra-delta" ng-if="extra.priceDelta !== 0">+ {{ demo.priceLabel(extra.priceDelta) }}</span>
+						</label>
+					</div>
+
+					<div class="configurator-quantity">
+						<span class="configurator-quantity-label">Quantidade</span>
+						<div class="configurator-quantity-controls">
+							<button type="button" class="qty-btn" ng-click="demo.bumpQuantity(-1)" ng-disabled="demo.configurator.quantity &lt;= 1" aria-label="Diminuir">−</button>
+							<span class="qty-value">{{ demo.configurator.quantity }}</span>
+							<button type="button" class="qty-btn" ng-click="demo.bumpQuantity(1)" ng-disabled="demo.configurator.quantity &gt;= 20" aria-label="Aumentar">+</button>
+						</div>
+					</div>
+
+					<div class="configurator-footer">
+						<div class="configurator-total">
+							<span>Subtotal</span>
+							<strong>{{ demo.priceLabel(demo.configuratorTotal()) }}</strong>
+						</div>
+						<button type="button" class="btn-keroum btn-keroum-primary configurator-confirm"
+							ng-click="demo.confirmConfigurator()" ng-disabled="!demo.canConfirmConfigurator()">
+							Adicionar ao carrinho
+						</button>
+					</div>
+				</div>
 			</div>
 
 			<div ng-if="demo.view === 'checkout'" class="demo-checkout">
-				<a class="demo-back" ng-click="demo.cancelCheckout()">&larr; Voltar ao cardápio</a>
+				<a class="demo-back" ng-click="demo.cancelCheckout()">&larr; Voltar à loja</a>
 				<h3>Finalizar pedido</h3>
-				<p class="checkout-summary">{{ demo.cartCount() }} itens &middot; total {{ demo.priceLabel(demo.cartSubtotal() + 6) }} (entrega R$ 6,00)</p>
+				<p class="checkout-summary">{{ demo.cartCount() }} itens em {{ demo.cartRestaurantCount() }} restaurante(s) · total {{ demo.priceLabel(demo.cartSubtotal() + 6) }} (entrega R$ 6,00)</p>
 				<form class="checkout-form" ng-submit="demo.submitCheckout()" novalidate>
 					<div class="form-group">
 						<label for="ck-name">Nome</label>
@@ -139,8 +215,8 @@
 
 			<div ng-if="demo.view === 'status'" class="demo-status-grid">
 				<div class="demo-status">
-					<h3>Seu pedido</h3>
-					<p class="status-summary">{{ demo.selected.name }} &middot; {{ demo.cartCount() }} itens &middot; {{ demo.priceLabel(demo.activeOrder.total) }}</p>
+					<h3>{{ demo.statusHeading() }}</h3>
+					<p class="status-summary">{{ demo.cartCount() }} itens · {{ demo.priceLabel(demo.activeOrder.total) }}</p>
 					<ol class="status-timeline">
 						<li ng-repeat="step in demo.timelineSteps()"
 							ng-class="{ 'is-reached': demo.isStatusReached(step.key), 'is-current': step.key === demo.activeOrder.status }">
