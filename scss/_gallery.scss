@@ -1,18 +1,37 @@
-/* Original KeroUm screens gallery */
+/* Original KeroUm screens gallery (collapsed by default, toggled from the demo nav) */
 
 .demo-gallery {
-	padding-top: 50px;
+	padding: 28px 0 36px;
+}
+
+.demo-gallery[hidden] {
+	display: none;
+}
+
+.gallery-title {
+	text-align: center;
+	margin: 0 0 4px;
+	font-size: 18px;
+	color: $color-bg-deep;
+}
+
+.gallery-subtitle {
+	text-align: center;
+	font-size: 13px;
+	max-width: 640px;
+	margin: 0 auto 20px;
+	color: #6a6a6a;
 }
 
 .telas-grid {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 20px;
+	gap: 12px;
 	justify-content: center;
 }
 
 .tela {
-	flex: 0 1 220px;
+	flex: 0 1 120px;
 	margin: 0;
 	text-align: center;
 }
@@ -20,14 +39,14 @@
 .tela a {
 	display: block;
 	background: #1f1f1f;
-	border-radius: $radius-md;
+	border-radius: $radius-sm;
 	overflow: hidden;
 	transition: transform $transition-base, box-shadow $transition-base;
 	box-shadow: $shadow-card;
 }
 
 .tela a:hover {
-	transform: translateY(-3px);
+	transform: translateY(-2px);
 	box-shadow: $shadow-card-hover;
 }
 
@@ -38,8 +57,22 @@
 }
 
 .tela figcaption {
-	margin-top: 10px;
+	margin-top: 6px;
 	color: $color-bg-deep;
-	font-size: 13px;
+	font-size: 11px;
 	font-weight: bold;
+}
+
+/* Nav icon link (toggle for the gallery) */
+
+.nav-icon-link {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+}
+
+.nav-icon-link .nav-icon {
+	width: 18px;
+	height: 18px;
+	fill: currentColor;
 }

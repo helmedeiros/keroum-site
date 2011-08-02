@@ -16,6 +16,7 @@
 	<script type="text/javascript" src="js/app/demo/order-resolver.js"></script>
 	<script type="text/javascript" src="js/app/demo/chat-resolver.js"></script>
 	<script type="text/javascript" src="js/app/demo/app.js"></script>
+	<script type="text/javascript" src="js/app/demo/gallery-toggle.js"></script>
 </head>
 <body class="home demo-page">
 	<header id="cabecalho">
@@ -26,6 +27,10 @@
 				</div>
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav navbar-right">
+						<li><a id="toggle-telas" class="nav-icon-link" href="#telas-originais" role="button" aria-expanded="false" aria-controls="telas-originais" title="Telas originais">
+							<svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 5h18v14H3V5zm2 2v8.586l4-4 3 3 3-3 5 5V7H5zm12 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/></svg>
+							<span>Telas originais</span>
+						</a></li>
 						<li><a href="index.html">&larr; Voltar</a></li>
 					</ul>
 				</div>
@@ -162,10 +167,10 @@
 			</div>
 		</div>
 	</section>
-	<section class="section section-light demo-gallery">
+	<section id="telas-originais" class="section section-light demo-gallery" hidden>
 		<div class="container">
-			<h2 class="section-title">Telas originais</h2>
-			<p class="section-subtitle">Os mockups que guiaram este demo, do KeroUm original.</p>
+			<h3 class="gallery-title">Telas originais</h3>
+			<p class="gallery-subtitle">Os mockups que guiaram este demo, do KeroUm original.</p>
 			<div class="telas-grid">
 				<figure class="tela">
 					<a href="imagens/telas/tela-01-carregamento.jpg" target="_blank" rel="noopener">
