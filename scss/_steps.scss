@@ -86,3 +86,17 @@
 	color: #555;
 	line-height: 1.5;
 }
+
+.feature-link {
+	display: inline-block;
+	margin-top: 10px;
+	font-size: 13px;
+	font-weight: bold;
+	color: $color-primary;
+	letter-spacing: 0.3px;
+}
+
+.feature-link:hover {
+	color: $color-primary-dark;
+	text-decoration: none;
+}

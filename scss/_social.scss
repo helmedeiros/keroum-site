@@ -1,0 +1,579 @@
+/* Social demo — three-phase rollout for ordering inside a social network */
+
+$social-bg:        #15202b;
+$social-card:      #1e2c3a;
+$social-border:    #2c3a4a;
+$social-text:      #e8eef2;
+$social-muted:     #9bb0c0;
+$social-link:      #4ca6ff;
+
+.social-shell {
+	background: $social-bg;
+	padding: 30px 0 60px;
+	color: $social-text;
+}
+
+.social-header {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.social-title {
+	color: $demo-yellow;
+	margin: 0 0 6px;
+}
+
+.social-subtitle {
+	color: rgba(255, 255, 255, 0.8);
+	margin: 0;
+	font-size: 14px;
+	max-width: 700px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* Tab switcher */
+
+.phase-tabs {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	justify-content: center;
+	margin-bottom: 22px;
+}
+
+.phase-tab {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	min-width: 220px;
+	background: $social-card;
+	color: $social-text;
+	border: 1px solid $social-border;
+	border-radius: $radius-md;
+	padding: 12px 16px;
+	cursor: pointer;
+	text-align: left;
+	transition: border-color $transition-base, transform $transition-base, box-shadow $transition-base;
+}
+
+.phase-tab:hover {
+	border-color: $demo-orange-top;
+	transform: translateY(-2px);
+}
+
+.phase-tab.is-active {
+	border-color: $demo-yellow;
+	background: linear-gradient(180deg, lighten($social-card, 4%) 0%, $social-card 100%);
+	box-shadow: 0 0 0 3px rgba(255, 210, 0, 0.18);
+}
+
+.phase-tab-num {
+	flex: 0 0 32px;
+	height: 32px;
+	border-radius: 50%;
+	background: $demo-orange-top;
+	color: #fff;
+	font-weight: bold;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 16px;
+}
+
+.phase-tab.is-active .phase-tab-num {
+	background: $demo-yellow;
+	color: $demo-orange-deep;
+}
+
+.phase-tab-text {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+}
+
+.phase-tab-name {
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.phase-tab-meta {
+	font-size: 11px;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	color: $social-muted;
+}
+
+/* Body: feed + side */
+
+.social-body {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 18px;
+	align-items: flex-start;
+}
+
+.social-feed {
+	flex: 1 1 60%;
+	min-width: 0;
+	background: $social-card;
+	border: 1px solid $social-border;
+	border-radius: $radius-md;
+	overflow: hidden;
+}
+
+.feed-header {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 10px 16px;
+	border-bottom: 1px solid $social-border;
+	background: rgba(0, 0, 0, 0.18);
+}
+
+.feed-bird { font-size: 16px; }
+.feed-title { font-weight: bold; font-size: 13px; }
+.feed-meta { color: $social-muted; font-size: 11px; margin-left: auto; text-transform: uppercase; letter-spacing: 0.5px; }
+
+/* Tweet */
+
+.tweet {
+	padding: 14px 16px;
+	border-bottom: 1px solid $social-border;
+}
+
+.tweet:last-child { border-bottom: 0; }
+
+.tweet-head {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin-bottom: 6px;
+}
+
+.tweet-avatar {
+	flex: 0 0 38px;
+	width: 38px;
+	height: 38px;
+	border-radius: 50%;
+	background: rgba(255, 255, 255, 0.08);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 22px;
+}
+
+.tweet-meta {
+	display: flex;
+	align-items: baseline;
+	gap: 6px;
+	flex-wrap: wrap;
+	font-size: 13px;
+}
+
+.tweet-author { font-weight: bold; color: $social-text; }
+.tweet-handle { color: $social-muted; }
+.tweet-when { color: $social-muted; font-size: 12px; }
+
+.tweet-text {
+	margin: 0 0 8px 48px;
+	font-size: 14px;
+	line-height: 1.45;
+	white-space: pre-line;
+}
+
+.quoted {
+	margin: 4px 0 8px 48px;
+	padding: 10px 12px;
+	border: 1px solid $social-border;
+	border-radius: $radius-sm;
+	background: rgba(0, 0, 0, 0.18);
+}
+
+.quoted-author { font-weight: bold; font-size: 12px; }
+.quoted-handle { color: $social-muted; font-size: 12px; margin-left: 6px; }
+.quoted-text { margin: 4px 0 0; font-size: 13px; color: rgba(255, 255, 255, 0.85); }
+
+/* Phase 1: bot reply + hint */
+
+.bot-reply {
+	margin: 8px 0 0 48px;
+	padding: 10px 12px;
+	border-left: 3px solid $demo-yellow;
+	background: rgba(255, 210, 0, 0.06);
+	border-radius: 0 $radius-sm $radius-sm 0;
+}
+
+.bot-reply-head {
+	display: flex;
+	align-items: baseline;
+	gap: 6px;
+	flex-wrap: wrap;
+	margin-bottom: 4px;
+	font-size: 12px;
+}
+
+.bot-avatar { font-size: 14px; }
+.bot-name { font-weight: bold; color: $demo-yellow; }
+.bot-handle { color: $social-muted; }
+.bot-badge {
+	margin-left: auto;
+	background: rgba(255, 210, 0, 0.18);
+	color: $demo-yellow;
+	font-size: 10px;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	padding: 2px 6px;
+	border-radius: 8px;
+}
+
+.bot-reply-text {
+	margin: 0 0 8px;
+	font-size: 13px;
+	color: rgba(255, 255, 255, 0.9);
+}
+
+.phase-action {
+	background: transparent;
+	border: 1px solid $demo-yellow;
+	color: $demo-yellow;
+	border-radius: $radius-sm;
+	padding: 6px 12px;
+	font-size: 12px;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+.phase-action:hover {
+	background: rgba(255, 210, 0, 0.12);
+}
+
+.bot-hint {
+	margin: 6px 0 0 48px;
+	font-size: 12px;
+	color: $social-muted;
+}
+
+.bot-hint-icon { margin-right: 4px; }
+
+/* Phase 2: extension-injected button */
+
+.ext-injected {
+	margin: 10px 0 0 48px;
+}
+
+.ext-btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	background: linear-gradient(180deg, $demo-orange-top 0%, $demo-orange-bottom 100%);
+	color: #fff;
+	border: 1px solid darken($demo-orange-bottom, 8%);
+	border-radius: $radius-sm;
+	padding: 8px 14px;
+	font-size: 13px;
+	font-weight: bold;
+	cursor: pointer;
+	box-shadow: 0 0 0 2px rgba(255, 210, 0, 0.25);
+	position: relative;
+}
+
+.ext-btn:hover { transform: translateY(-1px); }
+
+.ext-btn-icon { font-size: 14px; }
+
+.ext-btn-tag {
+	background: rgba(0, 0, 0, 0.28);
+	color: $demo-yellow;
+	font-size: 10px;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	padding: 2px 6px;
+	border-radius: 8px;
+	margin-left: 4px;
+}
+
+.ext-btn-repeat {
+	background: linear-gradient(180deg, lighten($demo-yellow, 5%) 0%, $demo-yellow 100%);
+	color: $demo-orange-deep;
+	border-color: darken($demo-yellow, 18%);
+	box-shadow: 0 0 0 2px rgba(239, 84, 2, 0.25);
+}
+
+.ext-btn-repeat .ext-btn-tag {
+	background: rgba(0, 0, 0, 0.16);
+	color: $demo-orange-deep;
+}
+
+/* Phase 3: native KeroUm card */
+
+.keroum-card {
+	margin: 10px 0 0 48px;
+	background: #fff;
+	color: #333;
+	border: 1px solid #d6dde2;
+	border-radius: $radius-md;
+	overflow: hidden;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.18);
+}
+
+.keroum-card-head {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	padding: 10px 14px;
+	border-bottom: 1px solid #ececec;
+}
+
+.keroum-card-logo {
+	flex: 0 0 28px;
+	width: 28px;
+	height: 28px;
+	border-radius: 6px;
+	background: $demo-orange-top;
+	color: #fff;
+	font-weight: bold;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 14px;
+}
+
+.keroum-card-title {
+	display: flex;
+	flex-direction: column;
+}
+
+.keroum-card-restaurant { font-weight: bold; font-size: 13px; color: $demo-orange-deep; }
+.keroum-card-handle {
+	font-size: 10px;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	color: #888;
+}
+
+.keroum-card-pitch {
+	margin: 0;
+	padding: 10px 14px;
+	font-size: 13px;
+	color: #444;
+	line-height: 1.4;
+}
+
+.keroum-card-footer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	padding: 8px 14px 12px;
+}
+
+.keroum-card-price {
+	color: $demo-orange-top;
+	font-weight: bold;
+	font-size: 16px;
+}
+
+.keroum-card-cta {
+	background: linear-gradient(180deg, $demo-orange-top 0%, $demo-orange-bottom 100%);
+	color: #fff;
+	border: 1px solid darken($demo-orange-bottom, 6%);
+	border-radius: $radius-sm;
+	padding: 8px 18px;
+	font-size: 13px;
+	font-weight: bold;
+	letter-spacing: 0.5px;
+	cursor: pointer;
+	margin-left: auto;
+}
+
+.keroum-card-cta:hover { background: linear-gradient(180deg, lighten($demo-orange-top, 6%) 0%, $demo-orange-top 50%, darken($demo-orange-bottom, 4%) 100%); }
+
+.keroum-card-cta-repeat {
+	background: $demo-yellow;
+	color: $demo-orange-deep;
+	border-color: darken($demo-yellow, 18%);
+}
+
+.keroum-card-order .keroum-card-head { background: rgba(255, 210, 0, 0.18); }
+
+/* Right side panels */
+
+.social-side {
+	flex: 0 0 320px;
+}
+
+.side-card {
+	background: $social-card;
+	border: 1px solid $social-border;
+	border-radius: $radius-md;
+	padding: 16px;
+	box-shadow: $shadow-card;
+}
+
+.side-card-head { margin-bottom: 12px; }
+
+.side-card-eyebrow {
+	display: inline-block;
+	color: $demo-yellow;
+	font-size: 11px;
+	text-transform: uppercase;
+	letter-spacing: 0.8px;
+	margin-bottom: 4px;
+}
+
+.side-card-title {
+	margin: 0 0 6px;
+	color: $social-text;
+	font-size: 16px;
+}
+
+.side-card-desc {
+	margin: 0;
+	color: $social-muted;
+	font-size: 12px;
+	line-height: 1.5;
+}
+
+/* Phase 1 DM thread */
+
+.dm-log {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	max-height: 60vh;
+	overflow-y: auto;
+}
+
+.dm-log li {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	padding: 8px 10px;
+	border-radius: $radius-sm;
+	font-size: 13px;
+	line-height: 1.4;
+	white-space: pre-line;
+	max-width: 90%;
+}
+
+.dm-log li.dm-bot {
+	background: rgba(255, 210, 0, 0.1);
+	border-left: 3px solid $demo-yellow;
+	color: rgba(255, 255, 255, 0.92);
+}
+
+.dm-log li.dm-user {
+	background: rgba(76, 166, 255, 0.12);
+	border-left: 3px solid $social-link;
+	align-self: flex-end;
+	color: rgba(255, 255, 255, 0.92);
+}
+
+.dm-sender {
+	font-size: 10px;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	color: $social-muted;
+}
+
+/* Phase 2 / 3 explainer */
+
+.bullet-list {
+	padding-left: 18px;
+	margin: 0 0 14px;
+}
+
+.bullet-list li {
+	font-size: 12px;
+	line-height: 1.5;
+	color: rgba(255, 255, 255, 0.85);
+	margin-bottom: 6px;
+}
+
+.bullet-list li strong { color: $social-text; }
+
+.quote-chain {
+	background: rgba(0, 0, 0, 0.22);
+	border-radius: $radius-sm;
+	padding: 12px;
+	margin-top: 8px;
+}
+
+.quote-chain-title {
+	margin: 0 0 8px;
+	color: $demo-yellow;
+	font-size: 12px;
+	text-transform: uppercase;
+	letter-spacing: 0.6px;
+}
+
+.quote-chain-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.quote-chain-list li {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	font-size: 12px;
+}
+
+.quote-chain-avatar {
+	flex: 0 0 24px;
+	width: 24px;
+	height: 24px;
+	border-radius: 50%;
+	background: rgba(255, 255, 255, 0.08);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 14px;
+}
+
+.quote-chain-who { font-weight: bold; }
+.quote-chain-action { color: $demo-yellow; font-style: italic; }
+.quote-chain-what { color: $social-muted; }
+
+/* Toast */
+
+.social-toast {
+	position: fixed;
+	bottom: 24px;
+	left: 50%;
+	transform: translateX(-50%);
+	background: $demo-orange-deep;
+	color: #fff;
+	padding: 10px 18px;
+	border-radius: $radius-sm;
+	font-size: 13px;
+	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+	z-index: 100;
+	border: 1px solid darken($demo-orange-top, 12%);
+}
+
+@media (max-width: 767px) {
+	.social-feed,
+	.social-side {
+		flex: 1 1 100%;
+	}
+
+	.phase-tab { min-width: 0; flex: 1 1 100%; }
+
+	.tweet-text,
+	.quoted,
+	.bot-reply,
+	.bot-hint,
+	.ext-injected,
+	.keroum-card {
+		margin-left: 0;
+	}
+}

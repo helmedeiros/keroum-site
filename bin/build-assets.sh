@@ -7,12 +7,13 @@ set -euo pipefail
 DIST="dist"
 
 # Clean the served sub-trees so deletes propagate (keep dist/principal.css from sass build).
-rm -rf "$DIST/js" "$DIST/imagens" "$DIST/locales" "$DIST/index.html" "$DIST/demo.html"
+rm -rf "$DIST/js" "$DIST/imagens" "$DIST/locales" "$DIST/index.html" "$DIST/demo.html" "$DIST/demo-social.html"
 mkdir -p "$DIST/js" "$DIST/imagens" "$DIST/locales"
 
 # HTML
 cp index.html "$DIST/"
 [ -f demo.html ] && cp demo.html "$DIST/" || true
+[ -f demo-social.html ] && cp demo-social.html "$DIST/" || true
 
 # JS (vendor + app)
 cp -R js/. "$DIST/js/"

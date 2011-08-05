@@ -49,7 +49,7 @@
     "f2": { "title": "Rich menus", "body": "Photos, descriptions, ingredients, nutrition info and ratings." },
     "f3": { "title": "Many payment methods", "body": "Card, meal voucher, cash on delivery &mdash; sorted in advance." },
     "f4": { "title": "Web, iPad and mobile", "body": "Same account everywhere. Start an order on one device, finish it on another." },
-    "f5": { "title": "Share and follow", "body": "Favorite restaurants, lists, and orders you can share with friends." },
+    "f5": { "title": "Share and follow", "body": "Favorite restaurants, lists, and orders you can share with friends.", "cta": "See the social-network demo →" },
     "f6": { "title": "Order status", "body": "Received, preparing, out for delivery, delivered &mdash; live." }
   },
   "team": {
