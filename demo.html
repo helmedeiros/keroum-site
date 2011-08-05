@@ -47,31 +47,6 @@
 				</header>
 
 				<div class="shop-body">
-					<aside class="cart-panel">
-						<h5>Carrinho ({{ demo.cartCount() }})<span class="cart-restaurant-tally" ng-if="demo.cartRestaurantCount() > 1"> · {{ demo.cartRestaurantCount() }} restaurantes</span></h5>
-						<div ng-if="demo.cart.length === 0" class="cart-empty">Toque em um produto para personalizar e adicionar.</div>
-						<div class="cart-groups" ng-if="demo.cart.length > 0">
-							<section class="cart-group" ng-repeat="group in demo.cartByRestaurant()">
-								<header class="cart-group-name">{{ group.restaurantName }}</header>
-								<ul class="cart-items">
-									<li ng-repeat="ci in group.items">
-										<div class="cart-item-name">{{ ci.quantity }}× {{ ci.name }}</div>
-										<div class="cart-item-config" ng-if="demo.cartItemConfigSummary(ci)">{{ demo.cartItemConfigSummary(ci) }}</div>
-										<div class="cart-item-line">
-											<span class="cart-item-price">{{ demo.priceLabel(ci.price * ci.quantity) }}</span>
-											<a class="cart-remove" ng-click="demo.removeFromCart(ci)">remover</a>
-										</div>
-									</li>
-								</ul>
-							</section>
-						</div>
-						<div class="cart-total" ng-if="demo.cart.length > 0">
-							<span>Subtotal</span>
-							<strong>{{ demo.priceLabel(demo.cartSubtotal()) }}</strong>
-						</div>
-						<button class="btn-keroum btn-keroum-primary cart-checkout-btn" ng-click="demo.openCheckout()" ng-disabled="demo.cart.length === 0">Finalizar pedido</button>
-					</aside>
-
 					<main class="shop-main">
 						<div class="shop-toolbar">
 							<div class="shop-search shop-search-restaurants">
@@ -128,6 +103,31 @@
 							</div>
 						</div>
 					</main>
+
+					<aside class="cart-panel">
+						<h5>Carrinho ({{ demo.cartCount() }})<span class="cart-restaurant-tally" ng-if="demo.cartRestaurantCount() > 1"> · {{ demo.cartRestaurantCount() }} restaurantes</span></h5>
+						<div ng-if="demo.cart.length === 0" class="cart-empty">Toque em um produto para personalizar e adicionar.</div>
+						<div class="cart-groups" ng-if="demo.cart.length > 0">
+							<section class="cart-group" ng-repeat="group in demo.cartByRestaurant()">
+								<header class="cart-group-name" ng-bind="group.restaurantName"></header>
+								<ul class="cart-items">
+									<li ng-repeat="ci in group.items">
+										<div class="cart-item-name"><span ng-bind="ci.quantity"></span>× <span ng-bind="ci.name"></span></div>
+										<div class="cart-item-config" ng-if="demo.cartItemConfigSummary(ci)" ng-bind="demo.cartItemConfigSummary(ci)"></div>
+										<div class="cart-item-line">
+											<span class="cart-item-price" ng-bind="demo.priceLabel(ci.price * ci.quantity)"></span>
+											<a class="cart-remove" ng-click="demo.removeFromCart(ci)">remover</a>
+										</div>
+									</li>
+								</ul>
+							</section>
+						</div>
+						<div class="cart-total" ng-if="demo.cart.length > 0">
+							<span>Subtotal</span>
+							<strong ng-bind="demo.priceLabel(demo.cartSubtotal())"></strong>
+						</div>
+						<button class="btn-keroum btn-keroum-primary cart-checkout-btn" ng-click="demo.openCheckout()" ng-disabled="demo.cart.length === 0">Finalizar pedido</button>
+					</aside>
 				</div>
 
 				<div class="configurator-backdrop" ng-if="demo.configurator" ng-click="demo.closeConfigurator()"></div>

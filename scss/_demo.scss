@@ -948,8 +948,7 @@ $demo-shell-bg:      #1f1f1f;
 
 	.demo-chat { max-height: none; }
 
-	.cart-panel { position: static; top: auto; order: 2; }
-	.shop-main  { order: 1; }
+	.cart-panel { position: static; top: auto; max-height: none; }
 
 	.shop-toolbar { flex-direction: column; align-items: stretch; }
 	.shop-search-restaurants { flex: 1 1 auto; max-width: none; }

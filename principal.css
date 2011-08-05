@@ -1382,10 +1382,7 @@ h6 {
   .cart-panel {
     position: static;
     top: auto;
-    order: 2;
-  }
-  .shop-main {
-    order: 1;
+    max-height: none;
   }
   .shop-toolbar {
     flex-direction: column;
