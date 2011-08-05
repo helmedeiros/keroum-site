@@ -93,30 +93,47 @@ $demo-shell-bg:      #1f1f1f;
 }
 
 .shop-search-restaurants {
-	flex: 0 0 220px;
-	max-width: 240px;
+	width: 100%;
+	margin-bottom: 14px;
 }
 
 .shop-search-products    { flex: 0 1 280px; }
 
-/* Toolbar above products: compact search + horizontal restaurant strip */
+/* Restaurant strip with prev/next paging arrows and edge fades */
 
-.shop-toolbar {
-	display: flex;
-	align-items: center;
-	gap: 12px;
-	margin-bottom: 16px;
+.restaurant-strip-wrap {
+	position: relative;
+	margin-bottom: 18px;
+	padding: 0 38px;
 }
 
-/* Restaurant strip */
+.restaurant-strip-wrap::before,
+.restaurant-strip-wrap::after {
+	content: '';
+	position: absolute;
+	top: 4px;
+	bottom: 14px;
+	width: 32px;
+	pointer-events: none;
+	z-index: 2;
+}
+
+.restaurant-strip-wrap::before {
+	left: 38px;
+	background: linear-gradient(to right, $demo-shell-bg, rgba(31, 31, 31, 0));
+}
+
+.restaurant-strip-wrap::after {
+	right: 38px;
+	background: linear-gradient(to left, $demo-shell-bg, rgba(31, 31, 31, 0));
+}
 
 .restaurant-strip {
 	display: flex;
 	gap: 10px;
 	overflow-x: auto;
-	padding: 4px 2px;
-	flex: 1 1 auto;
-	min-width: 0;
+	padding: 4px 2px 14px;
+	scroll-snap-type: x proximity;
 	scrollbar-color: $demo-orange-top rgba(255, 255, 255, 0.1);
 }
 
@@ -126,6 +143,7 @@ $demo-shell-bg:      #1f1f1f;
 
 .restaurant-chip {
 	flex: 0 0 140px;
+	scroll-snap-align: start;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -139,6 +157,32 @@ $demo-shell-bg:      #1f1f1f;
 	box-shadow: $shadow-card;
 	transition: transform $transition-base, box-shadow $transition-base, border-color $transition-base;
 }
+
+.strip-arrow {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+	border: 0;
+	background: $demo-orange-top;
+	color: #fff;
+	font-size: 20px;
+	line-height: 1;
+	cursor: pointer;
+	box-shadow: $shadow-card;
+	z-index: 3;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0;
+}
+
+.strip-arrow:hover { background: lighten($demo-orange-top, 6%); }
+
+.strip-arrow-prev { left: 0; }
+.strip-arrow-next { right: 0; }
 
 .restaurant-chip:hover,
 .restaurant-chip:focus {
@@ -301,6 +345,17 @@ $demo-shell-bg:      #1f1f1f;
 	padding: 12px;
 	font-size: 13px;
 }
+
+.product-scroll {
+	max-height: 60vh;
+	overflow-y: auto;
+	padding-right: 6px;
+	scrollbar-color: $demo-orange-top rgba(255, 255, 255, 0.1);
+}
+
+.product-scroll::-webkit-scrollbar { width: 8px; }
+.product-scroll::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.08); border-radius: 4px; }
+.product-scroll::-webkit-scrollbar-thumb { background: $demo-orange-top; border-radius: 4px; }
 
 /* Cart panel (grouped by restaurant) */
 
@@ -950,9 +1005,8 @@ $demo-shell-bg:      #1f1f1f;
 
 	.cart-panel { position: static; top: auto; max-height: none; }
 
-	.shop-toolbar { flex-direction: column; align-items: stretch; }
-	.shop-search-restaurants { flex: 1 1 auto; max-width: none; }
-
 	.shop-products-header { flex-direction: column; align-items: stretch; }
 	.shop-search-products { flex: 1; }
+
+	.product-scroll { max-height: none; }
 }
