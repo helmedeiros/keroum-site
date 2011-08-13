@@ -1,11 +1,12 @@
 /* Social demo — three-phase rollout for ordering inside a social network */
 
-$social-bg:        #15202b;
-$social-card:      #1e2c3a;
-$social-border:    #2c3a4a;
-$social-text:      #e8eef2;
-$social-muted:     #9bb0c0;
-$social-link:      #4ca6ff;
+$social-bg:        #f4f6f8;
+$social-card:      #ffffff;
+$social-border:    #e1e8ed;
+$social-text:      #14171a;
+$social-muted:     #657786;
+$social-link:      #1da1f2;
+$social-bot:       $demo-orange-top;
 
 .social-shell {
 	background: $social-bg;
@@ -19,17 +20,15 @@ $social-link:      #4ca6ff;
 }
 
 .social-title {
-	color: $demo-yellow;
+	color: $demo-orange-top;
 	margin: 0 0 6px;
 }
 
 .social-subtitle {
-	color: rgba(255, 255, 255, 0.8);
-	margin: 0;
+	color: $social-muted;
+	margin: 0 auto;
 	font-size: 14px;
 	max-width: 700px;
-	margin-left: auto;
-	margin-right: auto;
 }
 
 /* Tab switcher */
@@ -63,16 +62,16 @@ $social-link:      #4ca6ff;
 }
 
 .phase-tab.is-active {
-	border-color: $demo-yellow;
-	background: linear-gradient(180deg, lighten($social-card, 4%) 0%, $social-card 100%);
-	box-shadow: 0 0 0 3px rgba(255, 210, 0, 0.18);
+	border-color: $demo-orange-top;
+	background: #fff8f3;
+	box-shadow: 0 0 0 3px rgba(239, 84, 2, 0.12);
 }
 
 .phase-tab-num {
 	flex: 0 0 32px;
 	height: 32px;
 	border-radius: 50%;
-	background: $demo-orange-top;
+	background: $social-muted;
 	color: #fff;
 	font-weight: bold;
 	display: flex;
@@ -82,8 +81,8 @@ $social-link:      #4ca6ff;
 }
 
 .phase-tab.is-active .phase-tab-num {
-	background: $demo-yellow;
-	color: $demo-orange-deep;
+	background: $demo-orange-top;
+	color: #fff;
 }
 
 .phase-tab-text {
@@ -120,6 +119,7 @@ $social-link:      #4ca6ff;
 	border: 1px solid $social-border;
 	border-radius: $radius-md;
 	overflow: hidden;
+	box-shadow: $shadow-card;
 }
 
 .feed-header {
@@ -128,12 +128,29 @@ $social-link:      #4ca6ff;
 	gap: 8px;
 	padding: 10px 16px;
 	border-bottom: 1px solid $social-border;
-	background: rgba(0, 0, 0, 0.18);
+	background: $social-bg;
 }
 
 .feed-bird { font-size: 16px; }
-.feed-title { font-weight: bold; font-size: 13px; }
+.feed-title { font-weight: bold; font-size: 13px; color: $social-text; }
 .feed-meta { color: $social-muted; font-size: 11px; margin-left: auto; text-transform: uppercase; letter-spacing: 0.5px; }
+
+/* Generic single-color silhouette avatar */
+
+.avatar {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+	border-radius: 50%;
+	color: $social-muted;
+}
+
+.avatar svg {
+	width: 100%;
+	height: 100%;
+	display: block;
+}
 
 /* Tweet */
 
@@ -155,12 +172,6 @@ $social-link:      #4ca6ff;
 	flex: 0 0 38px;
 	width: 38px;
 	height: 38px;
-	border-radius: 50%;
-	background: rgba(255, 255, 255, 0.08);
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-size: 22px;
 }
 
 .tweet-meta {
@@ -180,6 +191,7 @@ $social-link:      #4ca6ff;
 	font-size: 14px;
 	line-height: 1.45;
 	white-space: pre-line;
+	color: $social-text;
 }
 
 .quoted {
@@ -187,39 +199,45 @@ $social-link:      #4ca6ff;
 	padding: 10px 12px;
 	border: 1px solid $social-border;
 	border-radius: $radius-sm;
-	background: rgba(0, 0, 0, 0.18);
+	background: $social-bg;
 }
 
-.quoted-author { font-weight: bold; font-size: 12px; }
+.quoted-author { font-weight: bold; font-size: 12px; color: $social-text; }
 .quoted-handle { color: $social-muted; font-size: 12px; margin-left: 6px; }
-.quoted-text { margin: 4px 0 0; font-size: 13px; color: rgba(255, 255, 255, 0.85); }
+.quoted-text { margin: 4px 0 0; font-size: 13px; color: $social-text; }
 
 /* Phase 1: bot reply + hint */
 
 .bot-reply {
 	margin: 8px 0 0 48px;
 	padding: 10px 12px;
-	border-left: 3px solid $demo-yellow;
-	background: rgba(255, 210, 0, 0.06);
+	border-left: 3px solid $demo-orange-top;
+	background: #fff8f3;
 	border-radius: 0 $radius-sm $radius-sm 0;
 }
 
 .bot-reply-head {
 	display: flex;
-	align-items: baseline;
+	align-items: center;
 	gap: 6px;
 	flex-wrap: wrap;
 	margin-bottom: 4px;
 	font-size: 12px;
 }
 
-.bot-avatar { font-size: 14px; }
-.bot-name { font-weight: bold; color: $demo-yellow; }
+.bot-avatar {
+	flex: 0 0 24px;
+	width: 24px;
+	height: 24px;
+	color: $social-bot;
+}
+
+.bot-name { font-weight: bold; color: $demo-orange-top; }
 .bot-handle { color: $social-muted; }
 .bot-badge {
 	margin-left: auto;
-	background: rgba(255, 210, 0, 0.18);
-	color: $demo-yellow;
+	background: rgba(239, 84, 2, 0.12);
+	color: $demo-orange-top;
 	font-size: 10px;
 	text-transform: uppercase;
 	letter-spacing: 0.5px;
@@ -230,13 +248,13 @@ $social-link:      #4ca6ff;
 .bot-reply-text {
 	margin: 0 0 8px;
 	font-size: 13px;
-	color: rgba(255, 255, 255, 0.9);
+	color: $social-text;
 }
 
 .phase-action {
 	background: transparent;
-	border: 1px solid $demo-yellow;
-	color: $demo-yellow;
+	border: 1px solid $demo-orange-top;
+	color: $demo-orange-top;
 	border-radius: $radius-sm;
 	padding: 6px 12px;
 	font-size: 12px;
@@ -245,7 +263,7 @@ $social-link:      #4ca6ff;
 }
 
 .phase-action:hover {
-	background: rgba(255, 210, 0, 0.12);
+	background: rgba(239, 84, 2, 0.08);
 }
 
 .bot-hint {
@@ -275,7 +293,6 @@ $social-link:      #4ca6ff;
 	font-weight: bold;
 	cursor: pointer;
 	box-shadow: 0 0 0 2px rgba(255, 210, 0, 0.25);
-	position: relative;
 }
 
 .ext-btn:hover { transform: translateY(-1px); }
@@ -311,10 +328,10 @@ $social-link:      #4ca6ff;
 	margin: 10px 0 0 48px;
 	background: #fff;
 	color: #333;
-	border: 1px solid #d6dde2;
+	border: 1px solid $social-border;
 	border-radius: $radius-md;
 	overflow: hidden;
-	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.18);
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 .keroum-card-head {
@@ -395,7 +412,7 @@ $social-link:      #4ca6ff;
 	border-color: darken($demo-yellow, 18%);
 }
 
-.keroum-card-order .keroum-card-head { background: rgba(255, 210, 0, 0.18); }
+.keroum-card-order .keroum-card-head { background: #fff8f3; }
 
 /* Right side panels */
 
@@ -415,11 +432,12 @@ $social-link:      #4ca6ff;
 
 .side-card-eyebrow {
 	display: inline-block;
-	color: $demo-yellow;
+	color: $demo-orange-top;
 	font-size: 11px;
 	text-transform: uppercase;
 	letter-spacing: 0.8px;
 	margin-bottom: 4px;
+	font-weight: bold;
 }
 
 .side-card-title {
@@ -461,16 +479,16 @@ $social-link:      #4ca6ff;
 }
 
 .dm-log li.dm-bot {
-	background: rgba(255, 210, 0, 0.1);
-	border-left: 3px solid $demo-yellow;
-	color: rgba(255, 255, 255, 0.92);
+	background: #fff4eb;
+	border-left: 3px solid $demo-orange-top;
+	color: $social-text;
 }
 
 .dm-log li.dm-user {
-	background: rgba(76, 166, 255, 0.12);
+	background: #eaf5ff;
 	border-left: 3px solid $social-link;
 	align-self: flex-end;
-	color: rgba(255, 255, 255, 0.92);
+	color: $social-text;
 }
 
 .dm-sender {
@@ -490,14 +508,15 @@ $social-link:      #4ca6ff;
 .bullet-list li {
 	font-size: 12px;
 	line-height: 1.5;
-	color: rgba(255, 255, 255, 0.85);
+	color: $social-text;
 	margin-bottom: 6px;
 }
 
-.bullet-list li strong { color: $social-text; }
+.bullet-list li strong { color: $social-text; font-weight: bold; }
 
 .quote-chain {
-	background: rgba(0, 0, 0, 0.22);
+	background: $social-bg;
+	border: 1px solid $social-border;
 	border-radius: $radius-sm;
 	padding: 12px;
 	margin-top: 8px;
@@ -505,10 +524,11 @@ $social-link:      #4ca6ff;
 
 .quote-chain-title {
 	margin: 0 0 8px;
-	color: $demo-yellow;
+	color: $demo-orange-top;
 	font-size: 12px;
 	text-transform: uppercase;
 	letter-spacing: 0.6px;
+	font-weight: bold;
 }
 
 .quote-chain-list {
@@ -531,16 +551,10 @@ $social-link:      #4ca6ff;
 	flex: 0 0 24px;
 	width: 24px;
 	height: 24px;
-	border-radius: 50%;
-	background: rgba(255, 255, 255, 0.08);
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-size: 14px;
 }
 
-.quote-chain-who { font-weight: bold; }
-.quote-chain-action { color: $demo-yellow; font-style: italic; }
+.quote-chain-who { font-weight: bold; color: $social-text; }
+.quote-chain-action { color: $demo-orange-top; font-style: italic; }
 .quote-chain-what { color: $social-muted; }
 
 /* Toast */
@@ -555,7 +569,7 @@ $social-link:      #4ca6ff;
 	padding: 10px 18px;
 	border-radius: $radius-sm;
 	font-size: 13px;
-	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
 	z-index: 100;
 	border: 1px solid darken($demo-orange-top, 12%);
 }
