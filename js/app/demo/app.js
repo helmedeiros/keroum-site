@@ -12,7 +12,7 @@
 		.controller('DemoController', ['$scope', 'restaurantResolver', 'menuResolver', 'orderResolver', 'chatResolver',
 			function ($scope, restaurantResolver, menuResolver, orderResolver, chatResolver) {
 				var vm = this;
-				vm.view = 'shop';
+				vm.view = 'intro';
 				vm.restaurants = null;
 				vm.loadingList = true;
 				vm.selectedRestaurantId = null;
@@ -47,6 +47,14 @@
 					return vm.restaurants.filter(function (r) {
 						return lower(r.name).indexOf(q) !== -1 || lower(r.cuisine).indexOf(q) !== -1;
 					});
+				};
+
+				vm.enterShop = function () {
+					vm.view = 'shop';
+				};
+
+				vm.backToIntro = function () {
+					vm.view = 'intro';
 				};
 
 				vm.pageStrip = function (selector, direction) {
@@ -299,7 +307,7 @@
 
 				vm.startOver = function () {
 					chatResolver.reset();
-					vm.view = 'shop';
+					vm.view = 'intro';
 					vm.cart = [];
 					vm.activeOrder = null;
 					vm.statusHistory = [];
