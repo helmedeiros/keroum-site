@@ -70,7 +70,6 @@
 			<div class="social-body">
 				<section class="social-feed" aria-label="Timeline simulada">
 					<div class="feed-header">
-						<span class="feed-bird" aria-hidden="true">🐦</span>
 						<span class="feed-title">Sua timeline</span>
 						<span class="feed-meta">timeline simulada</span>
 					</div>
@@ -115,26 +114,23 @@
 								<span class="bot-handle">@KeroUmBot</span>
 								<span class="bot-badge">resposta pública</span>
 							</div>
-							<p class="bot-reply-text">Achei algumas opções perto de você. Te chamei no PV pra continuar 📩</p>
+							<p class="bot-reply-text">Achei algumas opções perto de você. Te chamei no PV pra continuar.</p>
 							<button type="button" class="phase-action" ng-click="social.askBot(t)">Abrir conversa privada</button>
 						</div>
 
 						<div class="bot-hint" ng-if="social.isPhase('p1') && !t.mentionsKeroum && t.foodIntent">
-							<span class="bot-hint-icon" aria-hidden="true">💡</span>
-							Mencione <strong>@KeroUm</strong> pro bot achar restaurantes pra você.
+							Dica: mencione <strong>@KeroUm</strong> pro bot achar restaurantes pra você.
 						</div>
 
 						<!-- Phase 2: extension injects an inline button -->
 						<div class="ext-injected" ng-if="social.isPhase('p2') && t.foodIntent && !t.ordered">
 							<button type="button" class="ext-btn" ng-click="social.orderViaExtension(t)">
-								<span class="ext-btn-icon" aria-hidden="true">🛒</span>
 								<span class="ext-btn-label">Pedir pelo KeroUm</span>
 								<span class="ext-btn-tag">via extensão</span>
 							</button>
 						</div>
 						<div class="ext-injected" ng-if="social.isPhase('p2') && t.ordered">
 							<button type="button" class="ext-btn ext-btn-repeat" ng-click="social.repeatOrderViaExtension(t)">
-								<span class="ext-btn-icon" aria-hidden="true">🔁</span>
 								<span class="ext-btn-label">Pedir esse pedido também</span>
 								<span class="ext-btn-tag">via extensão</span>
 							</button>
@@ -167,7 +163,7 @@
 							<p class="keroum-card-pitch"><strong ng-bind="t.ordered.itemName"></strong> · total {{ social.priceLabel(t.ordered.total) }}</p>
 							<div class="keroum-card-footer">
 								<button type="button" class="keroum-card-cta keroum-card-cta-repeat" ng-click="social.repeatOrderViaCard(t)">
-									<span aria-hidden="true">🔁</span> Quote-pedir
+									Quote-pedir
 								</button>
 							</div>
 						</div>

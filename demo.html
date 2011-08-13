@@ -72,7 +72,7 @@
 				<div class="shop-body">
 					<main class="shop-main">
 						<div class="shop-search shop-search-restaurants">
-							<span class="shop-search-icon" aria-hidden="true">🔍</span>
+							<span class="shop-search-icon" aria-hidden="true"><svg viewBox="0 0 20 20" focusable="false"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="2"/><line x1="13.5" y1="13.5" x2="17.5" y2="17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
 							<input type="text" ng-model="demo.restaurantSearch" placeholder="Buscar restaurante ou cozinha..." aria-label="Buscar restaurante"/>
 						</div>
 
@@ -87,7 +87,7 @@
 									ng-repeat="r in demo.filteredRestaurants()"
 									ng-class="{ 'is-active': demo.selectedRestaurantId === r.id }"
 									ng-click="demo.selectRestaurant(r)">
-									<span class="restaurant-chip-emblem" aria-hidden="true">{{ r.emblem }}</span>
+									<span class="restaurant-chip-emblem" aria-hidden="true" ng-style="{ backgroundColor: r.brandColor }" ng-bind="r.emblem"></span>
 									<span class="restaurant-chip-name">{{ r.name }}</span>
 									<span class="restaurant-chip-meta">{{ r.distanceKm }} km · {{ r.etaMin }} min</span>
 								</button>
@@ -107,7 +107,7 @@
 									<div class="shop-products-meta">{{ demo.selectedRestaurant.cuisine }} · {{ demo.selectedRestaurant.etaMin }} min · {{ demo.selectedRestaurant.distanceKm }} km</div>
 								</div>
 								<div class="shop-search shop-search-products">
-									<span class="shop-search-icon" aria-hidden="true">🔍</span>
+									<span class="shop-search-icon" aria-hidden="true"><svg viewBox="0 0 20 20" focusable="false"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="2"/><line x1="13.5" y1="13.5" x2="17.5" y2="17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
 									<input type="text" ng-model="demo.productSearch" placeholder="Buscar no cardápio..." aria-label="Buscar produto"/>
 								</div>
 							</div>

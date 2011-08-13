@@ -193,7 +193,16 @@ $demo-shell-bg:      #1f1f1f;
 	top: 50%;
 	transform: translateY(-50%);
 	color: $demo-orange-top;
-	font-size: 12px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	pointer-events: none;
+}
+
+.shop-search-icon svg {
+	width: 14px;
+	height: 14px;
+	display: block;
 }
 
 .shop-search-restaurants {
@@ -301,8 +310,18 @@ $demo-shell-bg:      #1f1f1f;
 }
 
 .restaurant-chip-emblem {
-	font-size: 28px;
-	line-height: 1;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background: $demo-orange-top;
+	color: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: bold;
+	font-size: 14px;
+	letter-spacing: 0.5px;
+	margin-bottom: 2px;
 }
 
 .restaurant-chip-name {

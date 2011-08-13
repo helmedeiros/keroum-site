@@ -41,7 +41,7 @@
 		var t = String(userText || '').toLowerCase().trim();
 		if (!t) { return null; }
 		if (/(obrigad|valeu|tmj|brigad)/.test(t)) {
-			return { sender: SENDER.RESTAURANT, text: 'Obrigado a você! 🙏' };
+			return { sender: SENDER.RESTAURANT, text: 'Obrigado a você!' };
 		}
 		if (/(cad[eê]|onde|chega|atras|demora)/.test(t)) {
 			return { sender: SENDER.COURIER, text: 'Estou a caminho! Acompanhe pelo mapa do pedido.' };

@@ -73,13 +73,13 @@
 	var DM_THREAD = [
 		{ sender: 'bot',  text: 'Olá! Vi que você está em Boa Viagem (endereço salvo). Que tipo de comida quer pedir?' },
 		{ sender: 'user', text: 'sushi' },
-		{ sender: 'bot',  text: 'Achei 3 opções no seu raio. Responda 1, 2 ou 3:\n1️⃣ Sushi Konami — Combinado 20pç R$ 58 — 45min ⭐ 4.8\n2️⃣ Edo Sushi — Executivo R$ 62 — 50min ⭐ 4.5\n3️⃣ Yamada Sushi — Mini R$ 48 — 60min ⭐ 4.3' },
+		{ sender: 'bot',  text: 'Achei 3 opções no seu raio. Responda 1, 2 ou 3:\n[1] Sushi Konami — Combinado 20pç R$ 58 — 45min · 4.8\n[2] Edo Sushi — Executivo R$ 62 — 50min · 4.5\n[3] Yamada Sushi — Mini R$ 48 — 60min · 4.3' },
 		{ sender: 'user', text: '1' },
 		{ sender: 'bot',  text: 'Sushi Konami selecionado. Personalizar peixe? (responda "padrão" pra usar salmão)' },
 		{ sender: 'user', text: 'padrão' },
 		{ sender: 'bot',  text: 'Total R$ 64 (R$ 58 + R$ 6 entrega). Pagar com cartão final 1234? Responda "sim" pra confirmar.' },
 		{ sender: 'user', text: 'sim' },
-		{ sender: 'bot',  text: '✅ Pedido confirmado! Status: keroum.com.br/p/abc123 — você também recebe atualizações por aqui.' }
+		{ sender: 'bot',  text: 'Pedido confirmado. Status: keroum.com.br/p/abc123 — você também recebe atualizações por aqui.' }
 	];
 
 	var QUOTE_CHAIN = [
