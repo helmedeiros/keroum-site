@@ -18,7 +18,7 @@
 	<script type="text/javascript" src="js/app/demo/app.js"></script>
 	<script type="text/javascript" src="js/app/demo/gallery-toggle.js"></script>
 </head>
-<body class="home demo-page">
+<body class="home demo-page" ng-controller="DemoController as demo">
 	<header id="cabecalho">
 		<nav id="navegacao" class="navbar navbar-default" role="navigation">
 			<div class="container">
@@ -38,7 +38,7 @@
 			</div>
 		</nav>
 	</header>
-	<section class="section section-dark demo-shell" ng-controller="DemoController as demo">
+	<section class="section section-dark demo-shell">
 		<div class="container">
 
 			<div ng-if="demo.view === 'intro'" class="demo-intro">
