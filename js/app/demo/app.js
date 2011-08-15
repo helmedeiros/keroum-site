@@ -53,6 +53,10 @@
 					vm.view = 'shop';
 				};
 
+				vm.enterApp = function () {
+					vm.view = 'app';
+				};
+
 				vm.backToIntro = function () {
 					vm.view = 'intro';
 				};
