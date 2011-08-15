@@ -1,0 +1,20 @@
+{
+  "_lang": "en",
+  "nav": {
+    "video": "Video",
+    "problem": "Problem",
+    "solution": "Solution",
+    "howItWorks": "How it works",
+    "features": "Features",
+    "team": "Team",
+    "faq": "FAQ",
+    "contact": "Contact"
+  },
+  "problem": { "title": "What’s broken today" },
+  "solution": { "title": "KeroUm fixes it" },
+  "howItWorks": { "title": "How it works" },
+  "features": { "title": "Features" },
+  "team": { "title": "Team" },
+  "faq": { "title": "Frequently asked" },
+  "contact": { "title": "Let’s talk" }
+}

@@ -1,0 +1,20 @@
+{
+  "_lang": "pt-br",
+  "nav": {
+    "video": "Vídeo",
+    "problem": "Problema",
+    "solution": "Solução",
+    "howItWorks": "Como funciona",
+    "features": "Funcionalidades",
+    "team": "Equipe",
+    "faq": "FAQ",
+    "contact": "Contato"
+  },
+  "problem": { "title": "O que está quebrado hoje" },
+  "solution": { "title": "O KeroUm resolve" },
+  "howItWorks": { "title": "Como funciona" },
+  "features": { "title": "Funcionalidades" },
+  "team": { "title": "Equipe" },
+  "faq": { "title": "Perguntas frequentes" },
+  "contact": { "title": "Vamos conversar" }
+}
