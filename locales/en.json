@@ -10,11 +10,79 @@
     "faq": "FAQ",
     "contact": "Contact"
   },
-  "problem": { "title": "What’s broken today" },
-  "solution": { "title": "KeroUm fixes it" },
-  "howItWorks": { "title": "How it works" },
-  "features": { "title": "Features" },
-  "team": { "title": "Team" },
-  "faq": { "title": "Frequently asked" },
-  "contact": { "title": "Let’s talk" }
+  "hero": {
+    "pitch": "KeroUm is &ldquo;the place&rdquo; to order your meals: a friendly, accessible layout where you find dozens of options along with delivery time, payment method, address and nutrition info, all tailored to your saved or geolocated address. From your phone, your iPad, even your social networks. Pick it and receive it."
+  },
+  "problem": {
+    "title": "What’s broken today",
+    "subtitle": "Ordering food online in Brazil is still an obstacle course. You open three sites for one decision, and you still can’t tell what’s happening with your meal.",
+    "b1": { "title": "Every restaurant, its own site", "body": "PDF menu, busy phone line, WhatsApp order. The experience changes every meal." },
+    "b2": { "title": "Pay at the door", "body": "You never know if there’s change, if cards work, if your meal voucher is accepted. Surprise every time." },
+    "b3": { "title": "Ordering in the dark", "body": "Once you order, silence. Did it leave? Is it nearby? Calling the kitchen is your only option." }
+  },
+  "solution": {
+    "title": "KeroUm fixes it",
+    "subtitle": "One place to pick, pay for and receive your meals. From your phone, your iPad, or right inside your social networks &mdash; transparent from the tap to the door.",
+    "b1": { "title": "One catalog, every restaurant", "body": "Filter by distance, price, ETA and nutrition info. All on a single screen." },
+    "b2": { "title": "Pay in the app", "body": "Card, meal voucher or cash on delivery. Settled before the order leaves the kitchen." },
+    "b3": { "title": "Live tracking", "body": "Order status, chat with the restaurant, and courier location on a map." }
+  },
+  "howItWorks": {
+    "title": "How it works",
+    "subtitle": "Three steps from tap to table.",
+    "s1": { "title": "Pick", "body": "Browse nearby restaurants and filter by taste, price and ETA." },
+    "s2": { "title": "Pay", "body": "Card, meal voucher or cash on delivery — agreed in the app, no surprises." },
+    "s3": { "title": "Receive", "body": "Follow the order live and chat with the restaurant and the courier." }
+  },
+  "features": {
+    "title": "Features",
+    "subtitle": "What you’ll find inside KeroUm.",
+    "f1": { "title": "Geolocation", "body": "See what’s open near you, right now." },
+    "f2": { "title": "Rich menus", "body": "Photos, descriptions, ingredients, nutrition info and ratings." },
+    "f3": { "title": "Many payment methods", "body": "Card, meal voucher, cash on delivery &mdash; sorted in advance." },
+    "f4": { "title": "Web, iPad and mobile", "body": "Same account everywhere. Start an order on one device, finish it on another." },
+    "f5": { "title": "Share and follow", "body": "Favorite restaurants, lists, and orders you can share with friends." },
+    "f6": { "title": "Order status", "body": "Received, preparing, out for delivery, delivered &mdash; live." }
+  },
+  "team": {
+    "title": "Team",
+    "deco": { "name": "Deco Oliveira", "bio": "Deco Oliveira is a system administrator and high-availability backend engineer with years of enterprise systems experience." },
+    "hana": { "name": "Hana Medeiros", "bio": "Hana Medeiros is a business administrator specialized in finance and operations management." },
+    "helio": { "name": "Hélio Medeiros", "bio": "Hélio Medeiros is a systems analyst with deep experience in design, leadership and shipping scalable software." },
+    "philipe": { "name": "Philipe Coutinho", "bio": "Philipe Coutinho is an art director and web designer focused on friendly interfaces and UX." }
+  },
+  "faq": {
+    "title": "Frequently asked",
+    "subtitle": "The questions that fill our inbox.",
+    "q1": "Which cities will KeroUm launch in?",
+    "a1": "We’ll start in Fortaleza, Recife and Salvador, then expand gradually through the Northeast and Southeast over the next year.",
+    "q2": "What does it cost the restaurant?",
+    "a2": "No monthly fee. KeroUm charges a per-delivered-order commission &mdash; aligned with the partner’s real volume.",
+    "q3": "What about the courier? KeroUm’s or the restaurant’s?",
+    "a3": "Both models work. Restaurants with their own fleet keep operating. The rest use KeroUm’s partner courier network.",
+    "q4": "Do you accept meal vouchers?",
+    "a4": "Yes. Sodexo, VR, Ticket and Alelo in the first phase. Others as we integrate.",
+    "q5": "Can I pay cash on delivery?",
+    "a5": "You can. The change you need is recorded with the order to keep the doorstep simple.",
+    "q6": "Who’s behind KeroUm?",
+    "a6": "A small team of developers, business folks and a designer. See the Team section on this page."
+  },
+  "contact": {
+    "title": "Let’s talk",
+    "subtitle": "Want the business plan, a partnership, or to bring KeroUm to your city? Write to us.",
+    "form": {
+      "nameLabel": "Name",
+      "namePlaceholder": "What should we call you?",
+      "emailLabel": "Email",
+      "emailPlaceholder": "you@example.com",
+      "messageLabel": "Message",
+      "messagePlaceholder": "What would you like to discuss?",
+      "submit": "Send"
+    },
+    "errors": {
+      "name": "Please enter your name.",
+      "email": "Please enter a valid email.",
+      "message": "Tell us a little more."
+    }
+  }
 }
