@@ -5,8 +5,8 @@
 	'use strict';
 
 	angular.module('kerohum.demo', ['kerohum.demo.resolvers'])
-		.controller('DemoController', ['$scope', 'restaurantResolver', 'menuResolver', 'orderResolver',
-			function ($scope, restaurantResolver, menuResolver, orderResolver) {
+		.controller('DemoController', ['$scope', 'restaurantResolver', 'menuResolver', 'orderResolver', 'chatResolver',
+			function ($scope, restaurantResolver, menuResolver, orderResolver, chatResolver) {
 				var vm = this;
 				vm.view = 'list';
 				vm.restaurants = null;
@@ -19,6 +19,8 @@
 				vm.checkout = { name: '', address: '', paymentMethod: 'card' };
 				vm.activeOrder = null;
 				vm.statusHistory = [];
+				vm.chatMessages = chatResolver.messages;
+				vm.chatDraft = '';
 
 				restaurantResolver.list().then(function (list) {
 					vm.restaurants = list;
@@ -94,6 +96,7 @@
 
 				vm.submitCheckout = function () {
 					if (!vm.canSubmitCheckout()) { return; }
+					chatResolver.reset();
 					var run = orderResolver.submit({
 						items: vm.cart,
 						paymentMethod: vm.checkout.paymentMethod,
@@ -101,21 +104,41 @@
 					});
 					vm.activeOrder = run.order;
 					vm.statusHistory = [];
+					vm.chatMessages = chatResolver.messages;
 					vm.view = 'status';
 					run.progress.then(null, null, function (event) {
 						vm.statusHistory.push(event);
+						chatResolver.onStatus(event.status);
 					}).finally(function () {
 						vm.activeOrder.status = 'delivered';
 					});
 				};
 
+				vm.sendChat = function () {
+					if (!vm.chatDraft || !vm.chatDraft.trim()) { return; }
+					chatResolver.send(vm.chatDraft);
+					vm.chatDraft = '';
+				};
+
+				vm.chatSenderLabel = function (sender) {
+					switch (sender) {
+						case 'restaurant': return vm.selected ? vm.selected.name : 'Restaurante';
+						case 'courier':    return 'Entregador';
+						case 'user':       return 'Você';
+						default:            return 'KeroUm';
+					}
+				};
+
 				vm.startOver = function () {
+					chatResolver.reset();
 					vm.view = 'list';
 					vm.selected = null;
 					vm.menu = null;
 					vm.cart = [];
 					vm.activeOrder = null;
 					vm.statusHistory = [];
+					vm.chatDraft = '';
+					vm.chatMessages = chatResolver.messages;
 					vm.checkout = { name: '', address: '', paymentMethod: 'card' };
 				};
 
