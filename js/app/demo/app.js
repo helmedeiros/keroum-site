@@ -5,8 +5,8 @@
 	'use strict';
 
 	angular.module('kerohum.demo', ['kerohum.demo.resolvers'])
-		.controller('DemoController', ['$scope', 'restaurantResolver', 'menuResolver',
-			function ($scope, restaurantResolver, menuResolver) {
+		.controller('DemoController', ['$scope', 'restaurantResolver', 'menuResolver', 'orderResolver',
+			function ($scope, restaurantResolver, menuResolver, orderResolver) {
 				var vm = this;
 				vm.view = 'list';
 				vm.restaurants = null;
@@ -15,6 +15,10 @@
 				vm.menu = null;
 				vm.loadingMenu = false;
 				vm.error = null;
+				vm.cart = [];
+				vm.checkout = { name: '', address: '', paymentMethod: 'card' };
+				vm.activeOrder = null;
+				vm.statusHistory = [];
 
 				restaurantResolver.list().then(function (list) {
 					vm.restaurants = list;
@@ -44,7 +48,98 @@
 				};
 
 				vm.priceLabel = function (price) {
-					return 'R$ ' + price.toFixed(2).replace('.', ',');
+					return 'R$ ' + Number(price || 0).toFixed(2).replace('.', ',');
+				};
+
+				vm.addToCart = function (item) {
+					for (var i = 0; i < vm.cart.length; i++) {
+						if (vm.cart[i].id === item.id) {
+							vm.cart[i].quantity += 1;
+							return;
+						}
+					}
+					vm.cart.push({
+						id: item.id,
+						name: item.name,
+						price: item.price,
+						quantity: 1
+					});
+				};
+
+				vm.removeFromCart = function (cartItem) {
+					var idx = vm.cart.indexOf(cartItem);
+					if (idx !== -1) { vm.cart.splice(idx, 1); }
+				};
+
+				vm.cartCount = function () {
+					return vm.cart.reduce(function (acc, it) { return acc + it.quantity; }, 0);
+				};
+
+				vm.cartSubtotal = function () {
+					return vm.cart.reduce(function (acc, it) { return acc + it.price * it.quantity; }, 0);
+				};
+
+				vm.openCheckout = function () {
+					if (vm.cart.length === 0) { return; }
+					vm.view = 'checkout';
+				};
+
+				vm.cancelCheckout = function () {
+					vm.view = 'menu';
+				};
+
+				vm.canSubmitCheckout = function () {
+					return vm.checkout.name.length > 1 && vm.checkout.address.length > 4;
+				};
+
+				vm.submitCheckout = function () {
+					if (!vm.canSubmitCheckout()) { return; }
+					var run = orderResolver.submit({
+						items: vm.cart,
+						paymentMethod: vm.checkout.paymentMethod,
+						address: vm.checkout.address
+					});
+					vm.activeOrder = run.order;
+					vm.statusHistory = [];
+					vm.view = 'status';
+					run.progress.then(null, null, function (event) {
+						vm.statusHistory.push(event);
+					}).finally(function () {
+						vm.activeOrder.status = 'delivered';
+					});
+				};
+
+				vm.startOver = function () {
+					vm.view = 'list';
+					vm.selected = null;
+					vm.menu = null;
+					vm.cart = [];
+					vm.activeOrder = null;
+					vm.statusHistory = [];
+					vm.checkout = { name: '', address: '', paymentMethod: 'card' };
+				};
+
+				vm.statusLabel = function (key) {
+					if (!window.kerohumOrderState) { return key; }
+					var found = null;
+					window.kerohumOrderState.STATUSES.forEach(function (s) {
+						if (s.key === key) { found = s; }
+					});
+					return found ? found.labelPt : key;
+				};
+
+				vm.timelineSteps = function () {
+					return window.kerohumOrderState ? window.kerohumOrderState.STATUSES : [];
+				};
+
+				vm.isStatusReached = function (key) {
+					if (!vm.activeOrder) { return false; }
+					var idx = -1, currentIdx = -1, steps = vm.timelineSteps();
+					for (var i = 0; i < steps.length; i++) {
+						if (steps[i].key === key) { idx = i; }
+						if (steps[i].key === vm.activeOrder.status) { currentIdx = i; }
+					}
+					return idx !== -1 && currentIdx !== -1 && idx <= currentIdx;
 				};
 			}
 		]);
