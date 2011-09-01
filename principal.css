@@ -1,10 +1,20 @@
 /* Theme tokens */
 /* Base typography (Bootstrap 3 handles reset) */
+html, body {
+  overflow-x: hidden;
+}
+
 body {
   font-family: "Helvetica Neue", Arial, Verdana, sans-serif;
   color: #6D6D71;
   font-size: 14px;
   line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
 }
 
 a {
@@ -426,10 +436,12 @@ h6 {
   transition: background 250ms ease, transform 250ms ease, border-color 250ms ease;
 }
 
-.restaurant-card:hover {
+.restaurant-card:hover,
+.restaurant-card:focus {
   background: rgba(255, 255, 255, 0.08);
   border-color: rgba(255, 210, 0, 0.4);
   transform: translateY(-2px);
+  outline: none;
 }
 
 .restaurant-card h4 {
@@ -500,11 +512,17 @@ h6 {
 
 .menu-item {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 16px;
+  gap: 12px;
   padding: 12px 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.menu-item-info {
+  flex: 1 1 60%;
+  min-width: 0;
 }
 
 .menu-item-info h6 {
@@ -527,6 +545,7 @@ h6 {
 .menu-item-actions {
   text-align: right;
   white-space: nowrap;
+  flex: 0 0 auto;
 }
 
 .menu-item-price {
@@ -959,9 +978,15 @@ hr#e85e05 {
     background: rgba(0, 0, 0, 0.25);
     border-radius: 6px;
     margin-top: 8px;
+    float: none;
   }
   #cabecalho .navbar-nav > li > a {
     padding: 12px 18px;
+  }
+  #cabecalho .navbar-nav > li.active > a,
+  #cabecalho .navbar-nav > li.active > a:hover,
+  #cabecalho .navbar-nav > li.active > a:focus {
+    border-radius: 0;
   }
 }
 /* Hero (pitch text + iPhone-framed video) */
