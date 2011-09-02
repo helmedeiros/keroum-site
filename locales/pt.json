@@ -6,12 +6,20 @@
     "solution": "Solução",
     "howItWorks": "Como funciona",
     "features": "Funcionalidades",
+    "demo": "Demo",
     "team": "Equipe",
     "faq": "FAQ",
     "contact": "Contato"
   },
   "hero": {
-    "pitch": "O KeroUm é &ldquo;o local&rdquo; para compra de suas refeições, com um layout amigável e de fácil acesso, você achará diversas opções de lanches, assim como tempo de entrega, forma de pagamento, endereço e informações nutricionais, levando em consideração sua localização assinada ou georeferenciada. Do seu celular, iPad e até redes sociais. É só escolher e receber."
+    "pitch": "O KeroUm é &ldquo;o local&rdquo; para compra de suas refeições, com um layout amigável e de fácil acesso, você achará diversas opções de lanches, assim como tempo de entrega, forma de pagamento, endereço e informações nutricionais, levando em consideração sua localização assinada ou georeferenciada. Do seu celular, iPad e até redes sociais. É só escolher e receber.",
+    "tryDemo": "Experimente o demo",
+    "businessPlan": "Plano de negócio"
+  },
+  "demoCta": {
+    "title": "Quer ver funcionando?",
+    "subtitle": "Faça um pedido na simulação. Sem cobrança, sem entrega de verdade &mdash; só a experiência do clique à mesa.",
+    "button": "Abrir o demo"
   },
   "problem": {
     "title": "O que está quebrado hoje",
