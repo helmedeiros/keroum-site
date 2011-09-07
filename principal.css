@@ -911,6 +911,51 @@ h6 {
     width: 100%;
   }
 }
+/* Original KeroUm screens gallery */
+.demo-gallery {
+  padding-top: 50px;
+}
+
+.telas-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.tela {
+  flex: 0 1 220px;
+  margin: 0;
+  text-align: center;
+}
+
+.tela a {
+  display: block;
+  background: #1f1f1f;
+  border-radius: 6px;
+  overflow: hidden;
+  transition: transform 250ms ease, box-shadow 250ms ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+}
+
+.tela a:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.28);
+}
+
+.tela img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.tela figcaption {
+  margin-top: 10px;
+  color: #5a0808;
+  font-size: 13px;
+  font-weight: bold;
+}
+
 /* Language switcher (lives inside the navbar) */
 .lang-switcher {
   display: inline-flex;
