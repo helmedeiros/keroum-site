@@ -40,12 +40,13 @@
 				<div ng-if="demo.loadingList" class="demo-loading">Carregando restaurantes...</div>
 				<div ng-if="!demo.loadingList" class="restaurant-list">
 					<div class="restaurant-card" ng-repeat="r in demo.restaurants" ng-click="demo.open(r)">
+						<div class="restaurant-emblem" aria-hidden="true">{{ r.emblem }}</div>
 						<h4>{{ r.name }}</h4>
 						<div class="restaurant-meta">{{ r.cuisine }}</div>
 						<div class="restaurant-stats">
 							<span>{{ r.etaMin }} min</span>
 							<span>{{ r.distanceKm }} km</span>
-							<span>&#9733; {{ r.rating }}</span>
+							<span class="rating">&#9733; {{ r.rating }}</span>
 						</div>
 					</div>
 				</div>
