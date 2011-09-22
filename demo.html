@@ -46,62 +46,7 @@
 					<p class="shop-subtitle">Escolha um restaurante, monte seu pedido e some itens de outras casas no mesmo carrinho.</p>
 				</header>
 
-				<div class="shop-search shop-search-restaurants">
-					<span class="shop-search-icon" aria-hidden="true">🔍</span>
-					<input type="text" ng-model="demo.restaurantSearch" placeholder="Buscar restaurante ou cozinha..." aria-label="Buscar restaurante"/>
-				</div>
-
-				<div ng-if="demo.loadingList" class="demo-loading">Carregando restaurantes...</div>
-
-				<div ng-if="!demo.loadingList" class="restaurant-strip">
-					<button class="restaurant-chip" type="button"
-						ng-repeat="r in demo.filteredRestaurants()"
-						ng-class="{ 'is-active': demo.selectedRestaurantId === r.id }"
-						ng-click="demo.selectRestaurant(r)">
-						<span class="restaurant-chip-emblem" aria-hidden="true">{{ r.emblem }}</span>
-						<span class="restaurant-chip-name">{{ r.name }}</span>
-						<span class="restaurant-chip-meta">{{ r.distanceKm }} km · {{ r.etaMin }} min</span>
-					</button>
-					<div ng-if="demo.filteredRestaurants().length === 0" class="restaurant-strip-empty">
-						Nenhum restaurante encontrado.
-					</div>
-				</div>
-
 				<div class="shop-body">
-					<main class="shop-products">
-						<div class="shop-products-header" ng-if="demo.selectedRestaurant">
-							<div>
-								<h3>{{ demo.selectedRestaurant.name }}</h3>
-								<div class="shop-products-meta">{{ demo.selectedRestaurant.cuisine }} · {{ demo.selectedRestaurant.etaMin }} min · {{ demo.selectedRestaurant.distanceKm }} km</div>
-							</div>
-							<div class="shop-search shop-search-products">
-								<span class="shop-search-icon" aria-hidden="true">🔍</span>
-								<input type="text" ng-model="demo.productSearch" placeholder="Buscar no cardápio..." aria-label="Buscar produto"/>
-							</div>
-						</div>
-
-						<div ng-if="demo.loadingMenu" class="demo-loading">Carregando cardápio...</div>
-						<div ng-if="demo.error" class="demo-loading">Não conseguimos carregar este cardápio.</div>
-
-						<div ng-if="!demo.loadingMenu && demo.menu" class="product-grid">
-							<button class="product-card" type="button"
-								ng-repeat="entry in demo.filteredProducts()"
-								ng-click="demo.openConfigurator(entry.item)">
-								<div class="product-card-category">{{ entry.category }}</div>
-								<h4 class="product-card-name">{{ entry.item.name }}</h4>
-								<p class="product-card-desc">{{ entry.item.desc }}</p>
-								<div class="product-card-footer">
-									<span class="product-card-price">{{ demo.priceLabel(entry.item.price) }}</span>
-									<span class="product-card-kcal">{{ entry.item.kcal }} kcal</span>
-								</div>
-								<div class="product-card-options" ng-if="entry.item.options">Personalizar</div>
-							</button>
-							<div ng-if="demo.filteredProducts().length === 0" class="product-grid-empty">
-								Nenhum item bate com a busca.
-							</div>
-						</div>
-					</main>
-
 					<aside class="cart-panel">
 						<h5>Carrinho ({{ demo.cartCount() }})<span class="cart-restaurant-tally" ng-if="demo.cartRestaurantCount() > 1"> · {{ demo.cartRestaurantCount() }} restaurantes</span></h5>
 						<div ng-if="demo.cart.length === 0" class="cart-empty">Toque em um produto para personalizar e adicionar.</div>
@@ -126,6 +71,63 @@
 						</div>
 						<button class="btn-keroum btn-keroum-primary cart-checkout-btn" ng-click="demo.openCheckout()" ng-disabled="demo.cart.length === 0">Finalizar pedido</button>
 					</aside>
+
+					<main class="shop-main">
+						<div class="shop-toolbar">
+							<div class="shop-search shop-search-restaurants">
+								<span class="shop-search-icon" aria-hidden="true">🔍</span>
+								<input type="text" ng-model="demo.restaurantSearch" placeholder="Buscar restaurante..." aria-label="Buscar restaurante"/>
+							</div>
+							<div ng-if="demo.loadingList" class="demo-loading">Carregando restaurantes...</div>
+							<div ng-if="!demo.loadingList" class="restaurant-strip">
+								<button class="restaurant-chip" type="button"
+									ng-repeat="r in demo.filteredRestaurants()"
+									ng-class="{ 'is-active': demo.selectedRestaurantId === r.id }"
+									ng-click="demo.selectRestaurant(r)">
+									<span class="restaurant-chip-emblem" aria-hidden="true">{{ r.emblem }}</span>
+									<span class="restaurant-chip-name">{{ r.name }}</span>
+									<span class="restaurant-chip-meta">{{ r.distanceKm }} km · {{ r.etaMin }} min</span>
+								</button>
+								<div ng-if="demo.filteredRestaurants().length === 0" class="restaurant-strip-empty">
+									Nenhum restaurante encontrado.
+								</div>
+							</div>
+						</div>
+
+						<div class="shop-products">
+							<div class="shop-products-header" ng-if="demo.selectedRestaurant">
+								<div>
+									<h3>{{ demo.selectedRestaurant.name }}</h3>
+									<div class="shop-products-meta">{{ demo.selectedRestaurant.cuisine }} · {{ demo.selectedRestaurant.etaMin }} min · {{ demo.selectedRestaurant.distanceKm }} km</div>
+								</div>
+								<div class="shop-search shop-search-products">
+									<span class="shop-search-icon" aria-hidden="true">🔍</span>
+									<input type="text" ng-model="demo.productSearch" placeholder="Buscar no cardápio..." aria-label="Buscar produto"/>
+								</div>
+							</div>
+
+							<div ng-if="demo.loadingMenu" class="demo-loading">Carregando cardápio...</div>
+							<div ng-if="demo.error" class="demo-loading">Não conseguimos carregar este cardápio.</div>
+
+							<div ng-if="!demo.loadingMenu && demo.menu" class="product-grid">
+								<button class="product-card" type="button"
+									ng-repeat="entry in demo.filteredProducts()"
+									ng-click="demo.openConfigurator(entry.item)">
+									<div class="product-card-category">{{ entry.category }}</div>
+									<h4 class="product-card-name">{{ entry.item.name }}</h4>
+									<p class="product-card-desc">{{ entry.item.desc }}</p>
+									<div class="product-card-footer">
+										<span class="product-card-price">{{ demo.priceLabel(entry.item.price) }}</span>
+										<span class="product-card-kcal">{{ entry.item.kcal }} kcal</span>
+									</div>
+									<div class="product-card-options" ng-if="entry.item.options">Personalizar</div>
+								</button>
+								<div ng-if="demo.filteredProducts().length === 0" class="product-grid-empty">
+									Nenhum item bate com a busca.
+								</div>
+							</div>
+						</div>
+					</main>
 				</div>
 
 				<div class="configurator-backdrop" ng-if="demo.configurator" ng-click="demo.closeConfigurator()"></div>
