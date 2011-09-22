@@ -49,6 +49,16 @@
 					});
 				};
 
+				vm.pageStrip = function (selector, direction) {
+					var $el = window.jQuery && window.jQuery(selector);
+					if (!$el || !$el.length) { return; }
+					var step = Math.max(160, Math.floor($el.width() * 0.8));
+					$el.stop(true).animate(
+						{ scrollLeft: $el.scrollLeft() + direction * step },
+						250
+					);
+				};
+
 				vm.selectRestaurant = function (restaurant) {
 					vm.selectedRestaurantId = restaurant.id;
 					vm.selectedRestaurant = restaurant;
