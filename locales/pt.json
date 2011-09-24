@@ -49,7 +49,7 @@
     "f2": { "title": "Cardápio rico", "body": "Fotos, descrição, ingredientes, informações nutricionais e avaliações." },
     "f3": { "title": "Vários pagamentos", "body": "Cartão, Vale-Refeição, dinheiro na entrega &mdash; tudo combinado antes." },
     "f4": { "title": "Web, iPad e celular", "body": "Mesma conta em todos os dispositivos. Pedido começa num, termina em outro." },
-    "f5": { "title": "Compartilhe e siga", "body": "Restaurantes favoritos, listas e pedidos compartilháveis com amigos." },
+    "f5": { "title": "Compartilhe e siga", "body": "Restaurantes favoritos, listas e pedidos compartilháveis com amigos.", "cta": "Ver demo na rede social →" },
     "f6": { "title": "Status do pedido", "body": "Recebido, em preparo, saiu para entrega, entregue. Em tempo real." }
   },
   "team": {

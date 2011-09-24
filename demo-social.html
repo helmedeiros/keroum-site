@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="kerohum.demo.social">
+<head>
+	<title>KeroUm — Pedindo pela rede social</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<link rel="icon" href="imagens/favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" type="text/css"/>
+	<link rel="stylesheet" href="principal.css" type="text/css" charset="utf-8"/>
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.20/angular.min.js"></script>
+	<script type="text/javascript" src="js/app/demo/social.js"></script>
+</head>
+<body class="home demo-page demo-social-page" ng-controller="SocialController as social">
+	<header id="cabecalho">
+		<nav id="navegacao" class="navbar navbar-default" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="index.html"><span id="keroum">KeroUm</span></a>
+				</div>
+				<div class="collapse navbar-collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="demo.html">Demo do app</a></li>
+						<li><a href="index.html">&larr; Voltar</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+	<section class="section section-dark social-shell">
+		<div class="container">
+			<header class="social-header">
+				<h2 class="social-title">Pedindo pela rede social</h2>
+				<p class="social-subtitle">Três fases para ter o KeroUm dentro do Twitter, do bot público hoje ao card nativo via acordo com a rede.</p>
+			</header>
+
+			<div class="phase-tabs" role="tablist">
+				<button type="button" class="phase-tab" role="tab"
+					ng-class="{ 'is-active': social.isPhase('p1') }"
+					aria-selected="{{ social.isPhase('p1') }}"
+					ng-click="social.setPhase('p1')">
+					<span class="phase-tab-num">1</span>
+					<span class="phase-tab-text">
+						<span class="phase-tab-name">Bot público + DM</span>
+						<span class="phase-tab-meta">Hoje · zero instalação</span>
+					</span>
+				</button>
+				<button type="button" class="phase-tab" role="tab"
+					ng-class="{ 'is-active': social.isPhase('p2') }"
+					aria-selected="{{ social.isPhase('p2') }}"
+					ng-click="social.setPhase('p2')">
+					<span class="phase-tab-num">2</span>
+					<span class="phase-tab-text">
+						<span class="phase-tab-name">Extensão de navegador</span>
+						<span class="phase-tab-meta">Curto prazo · sem acordo</span>
+					</span>
+				</button>
+				<button type="button" class="phase-tab" role="tab"
+					ng-class="{ 'is-active': social.isPhase('p3') }"
+					aria-selected="{{ social.isPhase('p3') }}"
+					ng-click="social.setPhase('p3')">
+					<span class="phase-tab-num">3</span>
+					<span class="phase-tab-text">
+						<span class="phase-tab-name">Card nativo</span>
+						<span class="phase-tab-meta">Acordo com a rede</span>
+					</span>
+				</button>
+			</div>
+
+			<div class="social-body">
+				<section class="social-feed" aria-label="Timeline simulada">
+					<div class="feed-header">
+						<span class="feed-bird" aria-hidden="true">🐦</span>
+						<span class="feed-title">Sua timeline</span>
+						<span class="feed-meta">timeline simulada</span>
+					</div>
+
+					<article class="tweet" ng-repeat="t in social.feed">
+						<div class="tweet-head">
+							<span class="tweet-avatar" aria-hidden="true" ng-bind="t.authorAvatar"></span>
+							<div class="tweet-meta">
+								<span class="tweet-author" ng-bind="t.authorName"></span>
+								<span class="tweet-handle" ng-bind="t.authorHandle"></span>
+								<span class="tweet-when">· {{ t.when }}</span>
+							</div>
+						</div>
+						<p class="tweet-text" ng-bind="t.text"></p>
+
+						<div class="quoted" ng-if="social.quotedTweet(t)">
+							<span class="quoted-author" ng-bind="social.quotedTweet(t).authorName"></span>
+							<span class="quoted-handle" ng-bind="social.quotedTweet(t).authorHandle"></span>
+							<p class="quoted-text" ng-bind="social.quotedTweet(t).text"></p>
+						</div>
+
+						<!-- Phase 1: public bot reply under tagged tweets -->
+						<div class="bot-reply" ng-if="social.isPhase('p1') && t.mentionsKeroum">
+							<div class="bot-reply-head">
+								<span class="bot-avatar" aria-hidden="true">🤖</span>
+								<span class="bot-name">KeroUm Bot</span>
+								<span class="bot-handle">@KeroUmBot</span>
+								<span class="bot-badge">resposta pública</span>
+							</div>
+							<p class="bot-reply-text">Achei algumas opções perto de você. Te chamei no PV pra continuar 📩</p>
+							<button type="button" class="phase-action" ng-click="social.askBot(t)">Abrir conversa privada</button>
+						</div>
+
+						<div class="bot-hint" ng-if="social.isPhase('p1') && !t.mentionsKeroum && t.foodIntent">
+							<span class="bot-hint-icon" aria-hidden="true">💡</span>
+							Mencione <strong>@KeroUm</strong> pro bot achar restaurantes pra você.
+						</div>
+
+						<!-- Phase 2: extension injects an inline button -->
+						<div class="ext-injected" ng-if="social.isPhase('p2') && t.foodIntent && !t.ordered">
+							<button type="button" class="ext-btn" ng-click="social.orderViaExtension(t)">
+								<span class="ext-btn-icon" aria-hidden="true">🛒</span>
+								<span class="ext-btn-label">Pedir pelo KeroUm</span>
+								<span class="ext-btn-tag">via extensão</span>
+							</button>
+						</div>
+						<div class="ext-injected" ng-if="social.isPhase('p2') && t.ordered">
+							<button type="button" class="ext-btn ext-btn-repeat" ng-click="social.repeatOrderViaExtension(t)">
+								<span class="ext-btn-icon" aria-hidden="true">🔁</span>
+								<span class="ext-btn-label">Pedir esse pedido também</span>
+								<span class="ext-btn-tag">via extensão</span>
+							</button>
+						</div>
+
+						<!-- Phase 3: native KeroUm card -->
+						<div class="keroum-card" ng-if="social.isPhase('p3') && t.foodIntent && !t.ordered">
+							<div class="keroum-card-head">
+								<span class="keroum-card-logo" aria-hidden="true">K</span>
+								<div class="keroum-card-title">
+									<span class="keroum-card-restaurant">{{ t.intent.restaurantId ? 'Pizza Donatello' : 'KeroUm sugere' }}</span>
+									<span class="keroum-card-handle">card nativo</span>
+								</div>
+							</div>
+							<p class="keroum-card-pitch">{{ t.intent.special || 'Toque pra ver opções perto de você no raio de entrega' }}</p>
+							<div class="keroum-card-footer">
+								<span class="keroum-card-price" ng-if="t.intent.price">{{ social.priceLabel(t.intent.price) }}</span>
+								<button type="button" class="keroum-card-cta" ng-click="social.orderViaCard(t)">Pedir agora</button>
+							</div>
+						</div>
+
+						<div class="keroum-card keroum-card-order" ng-if="social.isPhase('p3') && t.ordered">
+							<div class="keroum-card-head">
+								<span class="keroum-card-logo" aria-hidden="true">K</span>
+								<div class="keroum-card-title">
+									<span class="keroum-card-restaurant" ng-bind="t.ordered.restaurantName"></span>
+									<span class="keroum-card-handle">pedido publicado</span>
+								</div>
+							</div>
+							<p class="keroum-card-pitch"><strong ng-bind="t.ordered.itemName"></strong> · total {{ social.priceLabel(t.ordered.total) }}</p>
+							<div class="keroum-card-footer">
+								<button type="button" class="keroum-card-cta keroum-card-cta-repeat" ng-click="social.repeatOrderViaCard(t)">
+									<span aria-hidden="true">🔁</span> Quote-pedir
+								</button>
+							</div>
+						</div>
+					</article>
+				</section>
+
+				<aside class="social-side">
+					<!-- Phase 1 side: DM thread -->
+					<div class="side-card dm-thread" ng-if="social.isPhase('p1')">
+						<header class="side-card-head">
+							<span class="side-card-eyebrow">Fase 1</span>
+							<h4 class="side-card-title">No PV com o @KeroUmBot</h4>
+							<p class="side-card-desc">Todo o pedido fecha aqui. Sem instalar nada, sem sair do Twitter — só lento e conversacional.</p>
+						</header>
+						<ul class="dm-log">
+							<li ng-repeat="m in social.dmThread" ng-class="'dm-' + m.sender">
+								<span class="dm-sender">{{ m.sender === 'bot' ? '@KeroUmBot' : 'Você' }}</span>
+								<span class="dm-text" ng-bind="m.text"></span>
+							</li>
+						</ul>
+					</div>
+
+					<!-- Phase 2 side: extension explainer -->
+					<div class="side-card phase-explainer" ng-if="social.isPhase('p2')">
+						<header class="side-card-head">
+							<span class="side-card-eyebrow">Fase 2</span>
+							<h4 class="side-card-title">A extensão age sobre o Twitter</h4>
+							<p class="side-card-desc">Sem acordo com a rede, mas com permissão do usuário — o controle KeroUm aparece direto na timeline.</p>
+						</header>
+						<ul class="bullet-list">
+							<li><strong>Detecta intenção</strong> em tweets ("queria sushi", "fome", restaurantes citados) e injeta um botão.</li>
+							<li><strong>Configurador overlay</strong> abre por cima do feed — você nunca troca de página.</li>
+							<li><strong>Re-pedir</strong> em tweets que mostram pedidos: 1 toque copia o carrinho pro seu checkout.</li>
+							<li><strong>Limitações honestas:</strong> só desktop, quebra quando o Twitter muda o layout, sem mobile nativo.</li>
+						</ul>
+					</div>
+
+					<!-- Phase 3 side: native cards + quote-order chain -->
+					<div class="side-card phase-explainer" ng-if="social.isPhase('p3')">
+						<header class="side-card-head">
+							<span class="side-card-eyebrow">Fase 3</span>
+							<h4 class="side-card-title">Card nativo, quote-pedido</h4>
+							<p class="side-card-desc">Acordo com a rede. O card KeroUm é parte do tweet — mobile e desktop, sem extensão.</p>
+						</header>
+						<ul class="bullet-list">
+							<li>Tweets com intenção viram <strong>cards de pedido</strong> renderizados pela rede.</li>
+							<li><strong>Quote-pedido</strong> é uma primitiva: igual a quote-tweet, mas com carrinho anexado.</li>
+							<li>Cadeia de quote-pedidos vira <strong>prova social</strong> embutida na timeline.</li>
+						</ul>
+						<div class="quote-chain">
+							<h5 class="quote-chain-title">Cadeia de quote-pedidos</h5>
+							<ol class="quote-chain-list">
+								<li ng-repeat="step in social.quoteChain">
+									<span class="quote-chain-avatar" aria-hidden="true" ng-bind="step.avatar"></span>
+									<span class="quote-chain-who" ng-bind="step.who"></span>
+									<span class="quote-chain-action" ng-bind="step.action"></span>
+									<span class="quote-chain-what" ng-bind="step.what"></span>
+								</li>
+							</ol>
+						</div>
+					</div>
+				</aside>
+			</div>
+
+			<div class="social-toast" ng-if="social.toast" ng-bind="social.toast.text"></div>
+		</div>
+	</section>
+</body>
+</html>
