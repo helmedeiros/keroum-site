@@ -446,6 +446,120 @@ h6 {
   color: rgba(255, 255, 255, 0.8);
 }
 
+/* Intro chooser */
+.demo-intro {
+  padding: 24px 0 40px;
+}
+
+.intro-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.intro-title {
+  color: #ffd200;
+  margin: 0 0 8px;
+}
+
+.intro-subtitle {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 15px;
+  margin: 0 auto;
+  max-width: 640px;
+  line-height: 1.5;
+}
+
+.intro-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.intro-card {
+  flex: 1 1 320px;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  background: linear-gradient(180deg, #ef5402 0%, #b30700 100%);
+  color: #fff;
+  border: 1px solid rgb(148.4, 5.8033519553, 0);
+  border-radius: 6px;
+  padding: 24px 22px 20px;
+  text-align: left;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+  transition: transform 250ms ease, box-shadow 250ms ease, border-color 250ms ease;
+  text-decoration: none;
+}
+
+.intro-card:hover,
+.intro-card:focus {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.28);
+  border-color: #ffd200;
+  outline: none;
+  text-decoration: none;
+  color: #fff;
+}
+
+.intro-card-icon {
+  font-size: 36px;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.intro-card-eyebrow {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #ffd200;
+  font-weight: bold;
+}
+
+.intro-card-title {
+  margin: 0 0 6px;
+  color: #fff;
+  font-size: 22px;
+}
+
+.intro-card-desc {
+  margin: 0 0 14px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.intro-card-cta {
+  margin-top: auto;
+  font-weight: bold;
+  color: #ffd200;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.intro-card-social {
+  background: linear-gradient(180deg, #1e2c3a 0%, #15202b 100%);
+  border-color: #0f1822;
+}
+
+.intro-card-social:hover,
+.intro-card-social:focus {
+  border-color: #4ca6ff;
+  box-shadow: 0 0 0 3px rgba(76, 166, 255, 0.18), 0 8px 22px rgba(0, 0, 0, 0.28);
+}
+
+.intro-card-social .intro-card-eyebrow {
+  color: #4ca6ff;
+}
+
+.intro-card-social .intro-card-cta {
+  color: #4ca6ff;
+}
+
 /* Single-page shop view */
 .shop-header {
   text-align: center;

@@ -27,6 +27,8 @@
 				</div>
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav navbar-right">
+						<li ng-if="demo.view !== 'intro'"><a ng-click="demo.backToIntro()" role="button">Trocar de demo</a></li>
+						<li><a href="demo-social.html">Rede social &rarr;</a></li>
 						<li><a id="toggle-telas" class="nav-icon-link" href="#telas-originais" role="button" aria-expanded="false" aria-controls="telas-originais" title="Telas originais">
 							<svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 5h18v14H3V5zm2 2v8.586l4-4 3 3 3-3 5 5V7H5zm12 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/></svg>
 							<span>Telas originais</span>
@@ -39,6 +41,29 @@
 	</header>
 	<section class="section section-dark demo-shell" ng-controller="DemoController as demo">
 		<div class="container">
+
+			<div ng-if="demo.view === 'intro'" class="demo-intro">
+				<header class="intro-header">
+					<h2 class="intro-title">Bem-vindo ao demo do KeroUm</h2>
+					<p class="intro-subtitle">Duas experiências, mesma história. Comece pelo app ou veja como o KeroUm vive dentro da rede social.</p>
+				</header>
+				<div class="intro-cards">
+					<button type="button" class="intro-card intro-card-app" ng-click="demo.enterShop()">
+						<span class="intro-card-icon" aria-hidden="true">📱</span>
+						<span class="intro-card-eyebrow">Demo 1</span>
+						<h3 class="intro-card-title">App KeroUm</h3>
+						<p class="intro-card-desc">Nove restaurantes simulados, busca, configurador de produto e carrinho multi-restaurante. Tudo num lugar só.</p>
+						<span class="intro-card-cta">Abrir o app &rarr;</span>
+					</button>
+					<a class="intro-card intro-card-social" href="demo-social.html">
+						<span class="intro-card-icon" aria-hidden="true">🐦</span>
+						<span class="intro-card-eyebrow">Demo 2</span>
+						<h3 class="intro-card-title">Pela rede social</h3>
+						<p class="intro-card-desc">O mesmo pedido, sem sair da timeline. Três fases: bot por DM, extensão de navegador e card nativo via acordo com a rede.</p>
+						<span class="intro-card-cta">Ver na rede &rarr;</span>
+					</a>
+				</div>
+			</div>
 
 			<div ng-if="demo.view === 'shop'" class="shop-view">
 				<header class="shop-header">
