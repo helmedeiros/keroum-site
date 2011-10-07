@@ -602,7 +602,16 @@ h6 {
   top: 50%;
   transform: translateY(-50%);
   color: #ef5402;
-  font-size: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.shop-search-icon svg {
+  width: 14px;
+  height: 14px;
+  display: block;
 }
 
 .shop-search-restaurants {
@@ -728,8 +737,18 @@ h6 {
 }
 
 .restaurant-chip-emblem {
-  font-size: 28px;
-  line-height: 1;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #ef5402;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  margin-bottom: 2px;
 }
 
 .restaurant-chip-name {
