@@ -13,7 +13,7 @@
 			id: 't-helio',
 			authorName: 'Hélio Medeiros',
 			authorHandle: '@helio_md',
-			authorAvatar: '🧔🏽',
+			authorColor: '#e74c3c',
 			when: '12min',
 			text: 'Dia frio em Boa Viagem, todo mundo aqui em casa querendo pedir comida. Alguma sugestão decente?',
 			foodIntent: true,
@@ -25,9 +25,9 @@
 			id: 't-hana',
 			authorName: 'Hana Medeiros',
 			authorHandle: '@hana_meds',
-			authorAvatar: '👩🏻',
+			authorColor: '#9b59b6',
 			when: '08min',
-			text: '@KeroUm preciso de um sushi pra essa noite — algo entre R$ 50 e R$ 80, entrega rápida 🍣',
+			text: '@KeroUm preciso de um sushi pra essa noite — algo entre R$ 50 e R$ 80, entrega rápida',
 			foodIntent: true,
 			mentionsKeroum: true,
 			ordered: null,
@@ -37,9 +37,9 @@
 			id: 't-pizza',
 			authorName: 'Pizza Donatello',
 			authorHandle: '@pizzadonatello',
-			authorAvatar: '🍕',
+			authorColor: '#e67e22',
 			when: '20min',
-			text: 'Promoção de quarta: pizza grande + refri 2L por R$ 39. Peça pelo @KeroUm e a gente leva em 35min 🍕🛵',
+			text: 'Promoção de quarta: pizza grande + refri 2L por R$ 39. Peça pelo @KeroUm e a gente leva em 35min',
 			foodIntent: true,
 			mentionsKeroum: true,
 			ordered: null,
@@ -49,9 +49,9 @@
 			id: 't-deco',
 			authorName: 'Deco Oliveira',
 			authorHandle: '@decoo',
-			authorAvatar: '👨🏽‍💻',
+			authorColor: '#16a085',
 			when: '35min',
-			text: 'Acabei de pedir uma moqueca da Maria Bonita pelo @KeroUm. Em 30min na mesa 🐟 #domingoemcasa',
+			text: 'Acabei de pedir uma moqueca da Maria Bonita pelo @KeroUm. Em 30min na mesa. #domingoemcasa',
 			foodIntent: true,
 			mentionsKeroum: true,
 			ordered: { restaurantId: 'maria-bonita', restaurantName: 'Maria Bonita', itemName: 'Moqueca de peixe', total: 45 }
@@ -60,9 +60,9 @@
 			id: 't-philipe',
 			authorName: 'Philipe Coutinho',
 			authorHandle: '@philipec',
-			authorAvatar: '🧑🏼‍🎨',
+			authorColor: '#3498db',
 			when: '02min',
-			text: '"Acabei de pedir uma moqueca..." — vou pedir essa mesma coisa! Obrigado pela dica @decoo 🙏',
+			text: '"Acabei de pedir uma moqueca..." — vou pedir essa mesma coisa! Obrigado pela dica @decoo',
 			foodIntent: false,
 			mentionsKeroum: false,
 			quotedTweetId: 't-deco',
@@ -83,9 +83,9 @@
 	];
 
 	var QUOTE_CHAIN = [
-		{ who: 'Deco',    avatar: '👨🏽‍💻', action: 'pediu',       what: 'Moqueca · Maria Bonita' },
-		{ who: 'Philipe', avatar: '🧑🏼‍🎨', action: 'quote-pediu', what: 'mesma moqueca · Maria Bonita' },
-		{ who: 'Hana',    avatar: '👩🏻',   action: 'quote-pediu', what: 'mesma moqueca · Maria Bonita' }
+		{ who: 'Deco',    color: '#16a085', action: 'pediu',       what: 'Moqueca · Maria Bonita' },
+		{ who: 'Philipe', color: '#3498db', action: 'quote-pediu', what: 'mesma moqueca · Maria Bonita' },
+		{ who: 'Hana',    color: '#9b59b6', action: 'quote-pediu', what: 'mesma moqueca · Maria Bonita' }
 	];
 
 	angular.module('kerohum.demo.social', [])
