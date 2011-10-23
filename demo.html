@@ -49,16 +49,106 @@
 				<div class="intro-cards">
 					<button type="button" class="intro-card intro-card-app" ng-click="demo.enterShop()">
 						<span class="intro-card-eyebrow">Demo 1</span>
-						<h3 class="intro-card-title">App KeroUm</h3>
-						<p class="intro-card-desc">Nove restaurantes simulados, busca, configurador de produto e carrinho multi-restaurante. Tudo num lugar só.</p>
+						<h3 class="intro-card-title">Web</h3>
+						<p class="intro-card-desc">Nove restaurantes simulados, busca, configurador de produto e carrinho multi-restaurante — tudo no navegador.</p>
+						<span class="intro-card-cta">Abrir a web &rarr;</span>
+					</button>
+					<button type="button" class="intro-card intro-card-phone" ng-click="demo.enterApp()">
+						<span class="intro-card-eyebrow">Demo 2</span>
+						<h3 class="intro-card-title">App</h3>
+						<p class="intro-card-desc">O mesmo pedido dentro de um iPhone — fiel às telas originais de 2011, com cardápio em lista e barra de carrinho fixa.</p>
 						<span class="intro-card-cta">Abrir o app &rarr;</span>
 					</button>
 					<a class="intro-card intro-card-social" href="demo-social.html">
-						<span class="intro-card-eyebrow">Demo 2</span>
+						<span class="intro-card-eyebrow">Demo 3</span>
 						<h3 class="intro-card-title">Pela rede social</h3>
 						<p class="intro-card-desc">O mesmo pedido, sem sair da timeline. Três fases: bot por DM, extensão de navegador e card nativo via acordo com a rede.</p>
 						<span class="intro-card-cta">Ver na rede &rarr;</span>
 					</a>
+				</div>
+			</div>
+
+			<div ng-if="demo.view === 'app'" class="app-view">
+				<div class="iphone-stage">
+					<div class="iphone-frame">
+						<span class="iphone-speaker" aria-hidden="true"></span>
+						<span class="iphone-camera" aria-hidden="true"></span>
+						<div class="iphone-screen">
+							<div class="phone-status-bar">
+								<span class="phone-status-time">9:41</span>
+								<span class="phone-status-right">
+									<span class="phone-status-dots" aria-hidden="true">●●●●●</span>
+									<span class="phone-status-carrier">4G</span>
+									<span class="phone-status-battery" aria-hidden="true"></span>
+								</span>
+							</div>
+							<header class="phone-app-header">
+								<h1 class="phone-app-title">KeroUm</h1>
+								<button type="button" class="phone-cart-icon-btn" ng-click="demo.openCheckout()" ng-disabled="demo.cart.length === 0" aria-label="Abrir carrinho">
+									<svg viewBox="0 0 24 24" focusable="false" aria-hidden="true"><path d="M7 6h13l-1.5 8.5a2 2 0 0 1-2 1.5H10a2 2 0 0 1-2-1.6L6 4H3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="10" cy="20" r="1.6" fill="currentColor"/><circle cx="17" cy="20" r="1.6" fill="currentColor"/></svg>
+									<span class="phone-cart-badge" ng-if="demo.cartCount() > 0" ng-bind="demo.cartCount()"></span>
+								</button>
+							</header>
+							<div class="phone-search">
+								<span class="phone-search-icon" aria-hidden="true">
+									<svg viewBox="0 0 20 20" focusable="false"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="2"/><line x1="13.5" y1="13.5" x2="17.5" y2="17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+								</span>
+								<input type="text" ng-model="demo.restaurantSearch" placeholder="Buscar restaurante" aria-label="Buscar restaurante"/>
+							</div>
+							<div class="phone-restaurants">
+								<button type="button" class="phone-restaurant-chip"
+									ng-repeat="r in demo.filteredRestaurants()"
+									ng-class="{ 'is-active': demo.selectedRestaurantId === r.id }"
+									ng-click="demo.selectRestaurant(r)">
+									<span class="phone-restaurant-emblem" aria-hidden="true" ng-style="{ backgroundColor: r.brandColor }" ng-bind="r.emblem"></span>
+									<span class="phone-restaurant-name" ng-bind="r.name"></span>
+									<span class="phone-restaurant-dist">{{ r.distanceKm }} km</span>
+								</button>
+							</div>
+							<section class="phone-menu" ng-if="demo.selectedRestaurant && !demo.loadingMenu">
+								<header class="phone-menu-header">
+									<h2 ng-bind="demo.selectedRestaurant.name"></h2>
+									<p>{{ demo.selectedRestaurant.cuisine }} · {{ demo.selectedRestaurant.etaMin }} min · {{ demo.selectedRestaurant.distanceKm }} km</p>
+								</header>
+								<div class="phone-category" ng-repeat="cat in demo.menu">
+									<h3 class="phone-category-title" ng-bind="cat.category"></h3>
+									<ul class="phone-items">
+										<li class="phone-item" ng-repeat="item in cat.items" ng-click="demo.openConfigurator(item)" role="button" tabindex="0">
+											<div class="phone-item-info">
+												<h4 class="phone-item-name" ng-bind="item.name"></h4>
+												<p class="phone-item-desc" ng-bind="item.desc"></p>
+											</div>
+											<div class="phone-item-side">
+												<span class="phone-item-price" ng-bind="demo.priceLabel(item.price)"></span>
+												<span class="phone-item-tag" ng-if="item.options">Personalizar</span>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</section>
+							<div class="phone-loading" ng-if="demo.loadingMenu">Carregando cardápio...</div>
+							<div class="phone-cart-bar" ng-if="demo.cart.length > 0">
+								<div class="phone-cart-bar-text">
+									<span class="phone-cart-bar-count">{{ demo.cartCount() }} itens</span>
+									<span class="phone-cart-bar-total" ng-bind="demo.priceLabel(demo.cartSubtotal())"></span>
+								</div>
+								<button type="button" class="phone-cart-bar-cta" ng-click="demo.openCheckout()">Finalizar</button>
+							</div>
+							<nav class="phone-footer-nav" aria-label="Navegação do app">
+								<button type="button" class="phone-nav-btn is-active" aria-label="Cardápio">
+									<svg viewBox="0 0 24 24" focusable="false" aria-hidden="true"><rect x="4" y="6" width="16" height="2" fill="currentColor"/><rect x="4" y="11" width="16" height="2" fill="currentColor"/><rect x="4" y="16" width="16" height="2" fill="currentColor"/></svg>
+								</button>
+								<button type="button" class="phone-nav-btn" aria-label="Favoritos">
+									<svg viewBox="0 0 24 24" focusable="false" aria-hidden="true"><path d="M12 4l2.5 5.2 5.7.8-4.1 4 1 5.7L12 17l-5.1 2.7 1-5.7-4.1-4 5.7-.8z" fill="currentColor"/></svg>
+								</button>
+								<button type="button" class="phone-nav-btn" aria-label="Pedidos">
+									<svg viewBox="0 0 24 24" focusable="false" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 18h14v2H5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+								</button>
+							</nav>
+						</div>
+						<button type="button" class="iphone-home" aria-label="Home"></button>
+					</div>
+					<p class="iphone-caption">Demo interativo dentro do chrome de um iPhone — inspirado nas telas de 2011.</p>
 				</div>
 			</div>
 

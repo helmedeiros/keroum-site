@@ -1609,6 +1609,519 @@ h6 {
     max-height: none;
   }
 }
+/* App mode — same shop, rendered inside a fake iPhone bezel.
+   Visual language follows the 2011 telas originais: gray app header,
+   white tiles, orange/red cart bar with yellow accents, black footer nav. */
+/* New third intro card */
+.intro-card-phone {
+  background: linear-gradient(180deg, rgb(252.9369294606, 93.0489626556, 8.4630705394) 0%, #b30700 100%);
+  border-color: rgb(148.4, 5.8033519553, 0);
+}
+
+.intro-card-phone:hover,
+.intro-card-phone:focus {
+  border-color: #ffd200;
+}
+
+.app-view {
+  padding: 20px 0 40px;
+}
+
+.iphone-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.iphone-caption {
+  margin: 0;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+  max-width: 320px;
+}
+
+/* The bezel */
+.iphone-frame {
+  position: relative;
+  width: 330px;
+  height: 640px;
+  background: #111;
+  border-radius: 40px;
+  padding: 56px 14px 64px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.55), inset 0 0 0 2px #2a2a2a, inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.iphone-speaker {
+  position: absolute;
+  top: 26px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 56px;
+  height: 6px;
+  background: #2c2c2c;
+  border-radius: 3px;
+}
+
+.iphone-camera {
+  position: absolute;
+  top: 22px;
+  left: 50%;
+  transform: translateX(-90px);
+  width: 8px;
+  height: 8px;
+  background: #1d2a35;
+  border: 1px solid #2c2c2c;
+  border-radius: 50%;
+}
+
+.iphone-home {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #1a1a1a;
+  border: 1px solid #2c2c2c;
+  box-shadow: inset 0 0 0 6px #111;
+  padding: 0;
+  cursor: default;
+}
+
+/* The screen */
+.iphone-screen {
+  width: 100%;
+  height: 100%;
+  background: #efe9e4;
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  color: #2c2c2c;
+  font-size: 13px;
+  position: relative;
+}
+
+.phone-status-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f5f0eb;
+  color: #1a1a1a;
+  padding: 4px 10px;
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 0.4px;
+  border-bottom: 1px solid #d9d2cc;
+}
+
+.phone-status-right {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.phone-status-dots {
+  letter-spacing: -1px;
+  font-size: 8px;
+}
+
+.phone-status-battery {
+  display: inline-block;
+  width: 18px;
+  height: 8px;
+  border: 1px solid #1a1a1a;
+  border-radius: 1px;
+  background: linear-gradient(to right, #1a1a1a 70%, transparent 70%);
+  position: relative;
+}
+
+.phone-status-battery::after {
+  content: "";
+  position: absolute;
+  top: 1px;
+  right: -3px;
+  width: 2px;
+  height: 4px;
+  background: #1a1a1a;
+  border-radius: 0 1px 1px 0;
+}
+
+/* App header — KeroUm in the gray bar from the original telas */
+.phone-app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(180deg, #4d4d4d 0%, #3a3a3a 100%);
+  color: #fff;
+  padding: 10px 14px;
+  border-bottom: 1px solid #1f1f1f;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.phone-app-title {
+  margin: 0;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  font-weight: bold;
+  color: #ffd200;
+}
+
+.phone-cart-icon-btn {
+  position: relative;
+  background: transparent;
+  border: 0;
+  color: #fff;
+  padding: 4px;
+  cursor: pointer;
+}
+
+.phone-cart-icon-btn[disabled] {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.phone-cart-icon-btn svg {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+
+.phone-cart-badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border-radius: 8px;
+  background: #ffd200;
+  color: #5a0808;
+  font-size: 10px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #3a3a3a;
+}
+
+/* Search */
+.phone-search {
+  position: relative;
+  padding: 8px 12px;
+  background: #fff;
+  border-bottom: 1px solid #e3ddd6;
+}
+
+.phone-search input {
+  width: 100%;
+  padding: 7px 8px 7px 28px;
+  font-size: 12px;
+  background: #efe9e4;
+  border: 1px solid #d9d2cc;
+  border-radius: 12px;
+  color: #2c2c2c;
+}
+
+.phone-search input:focus {
+  outline: none;
+  border-color: #ef5402;
+}
+
+.phone-search-icon {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+  pointer-events: none;
+}
+
+.phone-search-icon svg {
+  width: 12px;
+  height: 12px;
+  display: block;
+}
+
+/* Restaurant strip */
+.phone-restaurants {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 10px 12px;
+  background: #fff;
+  border-bottom: 1px solid #e3ddd6;
+  -webkit-overflow-scrolling: touch;
+}
+
+.phone-restaurants::-webkit-scrollbar {
+  display: none;
+}
+
+.phone-restaurant-chip {
+  flex: 0 0 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  background: transparent;
+  border: 0;
+  padding: 4px 2px;
+  cursor: pointer;
+  color: #2c2c2c;
+  opacity: 0.65;
+  transition: opacity 250ms ease, transform 250ms ease;
+}
+
+.phone-restaurant-chip.is-active {
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+.phone-restaurant-chip:focus {
+  outline: none;
+}
+
+.phone-restaurant-emblem {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #999;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
+}
+
+.phone-restaurant-chip.is-active .phone-restaurant-emblem {
+  box-shadow: 0 0 0 2px #ffd200, 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+.phone-restaurant-name {
+  font-size: 10px;
+  font-weight: bold;
+  color: #4a4a4a;
+  max-width: 64px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.phone-restaurant-dist {
+  font-size: 9px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+/* Menu (scrollable middle area) */
+.phone-menu {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  background: #efe9e4;
+  -webkit-overflow-scrolling: touch;
+}
+
+.phone-menu::-webkit-scrollbar {
+  width: 0;
+}
+
+.phone-menu-header {
+  background: linear-gradient(180deg, #ef5402 0%, #b30700 100%);
+  color: #fff;
+  padding: 10px 14px;
+  border-bottom: 1px solid rgb(148.4, 5.8033519553, 0);
+}
+
+.phone-menu-header h2 {
+  margin: 0;
+  font-size: 14px;
+  color: #ffd200;
+}
+
+.phone-menu-header p {
+  margin: 2px 0 0;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.85);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.phone-category {
+  margin-bottom: 8px;
+}
+
+.phone-category-title {
+  margin: 0;
+  padding: 6px 14px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: #5a0808;
+  background: #e6dfd8;
+  font-weight: bold;
+}
+
+.phone-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background: #fff;
+}
+
+.phone-item {
+  display: flex;
+  gap: 10px;
+  padding: 10px 14px;
+  border-bottom: 1px solid #efe9e4;
+  cursor: pointer;
+}
+
+.phone-item:active {
+  background: #fef3e8;
+}
+
+.phone-item-info {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.phone-item-name {
+  margin: 0 0 2px;
+  font-size: 13px;
+  color: #2c2c2c;
+}
+
+.phone-item-desc {
+  margin: 0;
+  font-size: 11px;
+  color: #888;
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.phone-item-side {
+  flex: 0 0 auto;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.phone-item-price {
+  color: #ef5402;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.phone-item-tag {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: #888;
+}
+
+.phone-loading {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  font-size: 12px;
+}
+
+/* Sticky cart bar — the yellow-on-orange subtotal from the originals */
+.phone-cart-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  background: linear-gradient(180deg, #ef5402 0%, #b30700 100%);
+  color: #ffd200;
+  border-top: 1px solid rgb(138.2, 5.4044692737, 0);
+}
+
+.phone-cart-bar-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.phone-cart-bar-count {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.phone-cart-bar-total {
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffd200;
+}
+
+.phone-cart-bar-cta {
+  margin-left: auto;
+  background: #ffd200;
+  color: #5a0808;
+  border: 1px solid rgb(163.2, 134.4, 0);
+  border-radius: 4px;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+}
+
+/* Footer nav — black bar with three icons, à la 2011 mockups */
+.phone-footer-nav {
+  display: flex;
+  background: #1a1a1a;
+  color: #999;
+  border-top: 1px solid #000;
+}
+
+.phone-nav-btn {
+  flex: 1;
+  background: transparent;
+  border: 0;
+  padding: 8px;
+  color: inherit;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.phone-nav-btn.is-active {
+  color: #ffd200;
+}
+
+.phone-nav-btn svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+@media (max-width: 400px) {
+  .iphone-frame {
+    width: 100%;
+    max-width: 330px;
+  }
+}
 /* Hero CTA row */
 .hero-ctas {
   margin-top: 18px;
