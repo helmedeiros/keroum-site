@@ -81,3 +81,7 @@ E acesse [http://localhost:8000](http://localhost:8000).
 ## Contato
 
 Para receber o plano de negócio ou propor uma parceria, escreva para `kerohum@gmail.com` ou use o formulário no rodapé do site.
+
+## License
+
+[MIT](LICENSE)
